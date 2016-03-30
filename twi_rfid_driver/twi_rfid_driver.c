@@ -24,7 +24,6 @@ void timer_read_event_handler(void* p_context)
     // Reads from the TWI-channel.
     nrf_drv_twi_rx(&twi_rfid, ADR_RFID_SLAVE, &rfid_value, 1); 
     nrf_gpio_pin_set(READ_LED);
-    radio_notification_evt_handler();
 };
 
 /** @brief  Function which initializes the timer.
@@ -32,7 +31,6 @@ void timer_read_event_handler(void* p_context)
 
 void twi_rfid_timer_init(void)
 {
-  APP_TIMER_INIT(RFID_APP_TIMER_PRESCALER, RFID_APP_TIMER_OP_QUEUE_SIZE, NULL);
   app_timer_create(&read_timer, APP_TIMER_MODE_REPEATED, &timer_read_event_handler);
   // Starts the timer, sets it up for repeated start.
   app_timer_start(read_timer, APP_TIMER_TICKS(RFID_APP_TIME_VALUE, RFID_APP_TIMER_PRESCALER), NULL);

@@ -1,4 +1,4 @@
 Output/nrf52832_xxaa_s132\ Debug/Obj/read_set_bit.o: \
- /SDK/nRF5_SDK_11.0.0_89a8197/examples/ble_peripheral/experimental_ble_app_blinky/pca10040/s132/arm5_no_packs/../../../read_set_bit/read_set_bit.c \
- /Applications/SEGGER\ Embedded\ Studio\ 2.16/include/stdint.h \
- /SDK/nRF5_SDK_11.0.0_89a8197/examples/ble_peripheral/experimental_ble_app_blinky/pca10040/s132/arm5_no_packs/../../../read_set_bit/read_set_bit.h
+ c:\sdk\examples\ble_peripheral\physical_web_toy_sdk_11\read_set_bit\read_set_bit.c \
+ C:/Program\ Files\ (x86)/SEGGER/SEGGER\ Embedded\ Studio\ 2.16a/include/stdint.h \
+ c:\sdk\examples\ble_peripheral\physical_web_toy_sdk_11\read_set_bit\read_set_bit.h

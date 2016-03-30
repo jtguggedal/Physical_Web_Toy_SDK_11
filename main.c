@@ -19,7 +19,6 @@
 #include "ble.h"
 #include "ble_hci.h"
 #include "ble_lbs.h"
-#include "ble_radio_notification.h"
 #include "ble_srv_common.h"
 #include "boards.h"
 #include "nordic_common.h"
@@ -59,9 +58,9 @@
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
 #define APP_ADV_TIMEOUT_IN_SECONDS      BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED       /**< The advertising time-out (in units of seconds). When set to 0, we will never time out. */
 
-#define APP_TIMER_PRESCALER             0                                           /**< Value of the RTC1 PRESCALER register. */
+#define APP_TIMER_PRESCALER             15                                           /**< Value of the RTC1 PRESCALER register. */
 #define APP_TIMER_MAX_TIMERS            6                                           /**< Maximum number of simultaneously created timers. */
-#define APP_TIMER_OP_QUEUE_SIZE         4                                           /**< Size of timer operation queues. */
+#define APP_TIMER_OP_QUEUE_SIZE         3                                           /**< Size of timer operation queues. */
 
 #define MIN_CONN_INTERVAL               MSEC_TO_UNITS(20, UNIT_1_25_MS)            /**< Minimum acceptable connection interval (0.5 seconds). */
 #define MAX_CONN_INTERVAL               MSEC_TO_UNITS(50, UNIT_1_25_MS)            /**< Maximum acceptable connection interval (1 second). */
@@ -85,6 +84,8 @@ static ble_lbs_t                        m_lbs;                                  
 bool user_connected = false;
 
 uint8_t pin_state[] = {0, 0, 0};
+
+APP_TIMER_DEF(advertising_timer);
 
 /**@brief Function for the output pin initialization.
  *
@@ -297,7 +298,7 @@ static void advertising_start(void)
 
 uint8_t advertising_switch_counter = 0;
 
-void radio_notification_evt_handler(void)
+void radio_notification_evt_handler(void* p_context)
 {
     //if (!radio_evt)
     //{
@@ -467,6 +468,13 @@ void nrf_gpiote_init(void){
     nrf_drv_gpiote_in_event_enable(16, true);
 }
 
+void advertising_timer_init(void){
+
+  app_timer_create(&advertising_timer, APP_TIMER_MODE_REPEATED, &radio_notification_evt_handler);
+  //Starts the timer, sets it up for repeated start.
+  app_timer_start(advertising_timer, APP_TIMER_TICKS(300, 15), NULL);
+
+}
 
 /**@brief Function for the Power Manager.
  */
@@ -487,6 +495,7 @@ int main(void)
     // Initialize
     pin_output_init();
     timers_init();
+    advertising_timer_init();
     ble_stack_init();
     gap_params_init();
     services_init();
