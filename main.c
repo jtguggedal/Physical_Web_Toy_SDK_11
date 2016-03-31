@@ -53,7 +53,7 @@
 #define IR_RECEIVER_PIN_2               14
 #define IR_RECEIVER_PIN_3               15
 
-#define DEVICE_NAME                     "MR YELLOW"                                        /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "MS GREEN"                                        /**< Name of device. Will be included in the advertising data. */
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
 #define APP_ADV_TIMEOUT_IN_SECONDS      BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED       /**< The advertising time-out (in units of seconds). When set to 0, we will never time out. */
@@ -436,11 +436,6 @@ static void pin_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t ac
             ble_lbs_on_button_change(&m_lbs, 1, 1);
     else if(pin == 15)
             ble_lbs_on_button_change(&m_lbs, 1, 2);
-    else if(pin == 16){
-            nrf_gpio_pin_clear(LED_RFID_TWI_READ_PIN);
-            ble_lbs_on_button_change(&m_lbs, 1, 3);
-            nrf_gpio_pin_set(LED_RFID_TWI_READ_PIN);
-   }
 }
 
 /**@brief Function for initializing the gpiote driver.

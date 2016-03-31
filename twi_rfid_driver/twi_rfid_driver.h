@@ -7,8 +7,8 @@
 static ble_lbs_t                        m_lbs;                                      /**< LED Button Service instance. */
 
 // Define pins for I2C-communication with the RFID-module
-#define SDA_RFID_PIN         3
-#define SCL_RFID_PIN         4
+#define SDA_RFID_PIN         24
+#define SCL_RFID_PIN         25
 
 // Define the slave address
 #define ADR_RFID_SLAVE       0x61
