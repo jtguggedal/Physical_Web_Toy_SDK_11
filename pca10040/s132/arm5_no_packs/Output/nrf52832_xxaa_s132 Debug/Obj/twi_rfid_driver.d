@@ -36,6 +36,22 @@ Output/nrf52832_xxaa_s132\ Debug/Obj/twi_rfid_driver.o: \
  c:\sdk\components\libraries\util\app_util.h \
  C:/Users/Lumanutt.Gaara/AppData/Local/SEGGER/SEGGER\ Embedded\ Studio/v2/packages/nRF/CMSIS/Device/Include/compiler_abstraction.h \
  c:\sdk\components\libraries\util\app_error_weak.h \
+ ../../../ble_lbs/ble_lbs.h \
+ c:\sdk\components\softdevice\s132\headers\ble.h \
+ c:\sdk\components\softdevice\s132\headers\ble_ranges.h \
+ c:\sdk\components\softdevice\s132\headers\ble_types.h \
+ c:\sdk\components\softdevice\s132\headers\ble_gap.h \
+ c:\sdk\components\softdevice\s132\headers\nrf_svc.h \
+ c:\sdk\components\softdevice\s132\headers\ble_l2cap.h \
+ c:\sdk\components\softdevice\s132\headers\ble_err.h \
+ c:\sdk\components\softdevice\s132\headers\nrf_error.h \
+ c:\sdk\components\softdevice\s132\headers\ble_gatt.h \
+ c:\sdk\components\softdevice\s132\headers\ble_gattc.h \
+ c:\sdk\components\softdevice\s132\headers\ble_gatts.h \
+ c:\sdk\components\ble\common\ble_srv_common.h \
+ c:\sdk\components\softdevice\s132\headers\ble_types.h \
+ c:\sdk\components\softdevice\s132\headers\ble_gap.h \
+ c:\sdk\components\softdevice\s132\headers\ble_gatt.h \
  c:\sdk\components\drivers_nrf\hal\nrf_gpio.h \
  c:\sdk\components\libraries\timer\app_timer.h \
  c:\sdk\components\libraries\util\app_error.h

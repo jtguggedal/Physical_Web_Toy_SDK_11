@@ -2,7 +2,9 @@
 #include "nrf_drv_twi.h"
 #include "nrf_delay.h"
 #include "nrf_drv_timer.h"
+#include "ble_lbs.h"
 
+static ble_lbs_t                        m_lbs;                                      /**< LED Button Service instance. */
 
 // Define pins for I2C-communication with the RFID-module
 #define SDA_RFID_PIN         3

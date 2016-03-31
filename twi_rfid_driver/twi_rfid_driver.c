@@ -2,9 +2,12 @@
 #include "twi_rfid_driver.h"
 #include "nrf_drv_timer.h"
 #include "nrf_gpio.h"
+#include "nrf_delay.h"
 #include "app_timer.h"
+#include "ble_lbs.h"
 
 uint8_t rfid_value = 0x00;
+uint8_t rfid_counter = 0;
 
 // Define the TWI-channel instance.
 
@@ -20,10 +23,23 @@ APP_TIMER_DEF(read_timer);
 
 void timer_read_event_handler(void* p_context)
 {
-    nrf_gpio_pin_clear(READ_LED);   
+    nrf_gpio_pin_clear(READ_LED);  
+     
     // Reads from the TWI-channel.
     nrf_drv_twi_rx(&twi_rfid, ADR_RFID_SLAVE, &rfid_value, 1); 
     nrf_gpio_pin_set(READ_LED);
+    if (rfid_value != 0x00){
+      rfid_counter++;
+      
+      nrf_gpio_pin_clear(READ_LED);
+      ble_lbs_on_button_change(&m_lbs, rfid_counter, 4);
+      nrf_delay_ms(500);
+      nrf_gpio_pin_set(READ_LED);
+      
+      rfid_value = 0x00;
+
+    };
+      
 };
 
 /** @brief  Function which initializes the timer.
