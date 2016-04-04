@@ -26,7 +26,7 @@ static const nrf_drv_twi_t twi_rfid = NRF_DRV_TWI_INSTANCE(1);
 APP_TIMER_DEF(read_timer);
 
 void read_rfid_shield(void){
-
+  nrf_delay_ms(200);
 }
 
 /** @brief  Function which handles the timer events.
@@ -35,6 +35,7 @@ void read_rfid_shield(void){
 
 uint8_t rfid_read_event_handler(void)
 {
+    nrf_gpio_pin_clear(READ_PIN);
     read_rfid_shield();
      
       if (rfid_counter == 0)
@@ -43,7 +44,7 @@ uint8_t rfid_read_event_handler(void)
           rfid_counter++;
       
       return rfid_counter;
-      
+    nrf_gpio_pin_set(READ_PIN);  
 };
 
 
@@ -65,9 +66,6 @@ void twi_rfid_init(void)
    
    // Enable the TWI channel
    nrf_drv_twi_enable(&twi_rfid);
-
-   //Zero byte 4
-   ble_lbs_on_button_change(&m_lbs, 0, 4);
 
    //Initializes the RFID-shield
    nrf_drv_twi_tx(&twi_rfid, ADR_RFID_SLAVE, rfid_init_array_1, sizeof(rfid_init_array_1), false);

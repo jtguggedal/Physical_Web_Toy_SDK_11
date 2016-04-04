@@ -8,6 +8,8 @@
 #define SDA_RFID_PIN         24
 #define SCL_RFID_PIN         25
 
+#define READ_PIN             20
+
 // Define the slave address
 #define ADR_RFID_SLAVE       0x24
 
@@ -16,5 +18,6 @@
 
 // Prototypes for functions used in twi_rfid_driver.c
 
+void read_rfid_shield(void);
 uint8_t rfid_read_event_handler(void);
 void twi_rfid_init(void);
