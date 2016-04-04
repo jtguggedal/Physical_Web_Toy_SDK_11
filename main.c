@@ -53,7 +53,7 @@
 #define IR_RECEIVER_PIN_2               14
 #define IR_RECEIVER_PIN_3               15
 
-#define DEVICE_NAME                     "DONTCONNECT"                                        /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "COOL GUY"                                        /**< Name of device. Will be included in the advertising data. */
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
 #define APP_ADV_TIMEOUT_IN_SECONDS      BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED       /**< The advertising time-out (in units of seconds). When set to 0, we will never time out. */
@@ -76,9 +76,6 @@
 #define RADIO_NOTIFICATION_IRQ_PRIORITY 3
 #define RADIO_NOTIFICATION_DISTANCE     NRF_RADIO_NOTIFICATION_DISTANCE_800US
 
-
-
-
 static uint16_t                         m_conn_handle = BLE_CONN_HANDLE_INVALID;    /**< Handle of the current connection. */
 static ble_lbs_t                        m_lbs;                                      /**< LED Button Service instance. */
 bool user_connected = false;
@@ -86,6 +83,20 @@ bool user_connected = false;
 uint8_t pin_state[] = {0, 0, 0};
 
 APP_TIMER_DEF(advertising_timer);
+
+uint8_t rfid_counter = 0;
+uint8_t hit_counter = 0;
+
+/**@brief Function for updating the hit value when a hit is registered.
+*/
+
+uint8_t new_hit_value (void){
+    if (hit_counter == 0)
+        hit_counter = 1;
+    else
+        hit_counter++;
+    return hit_counter;
+}
 
 /**@brief Function for the output pin initialization.
  *
@@ -429,19 +440,23 @@ static void ble_stack_init(void)
 /**@brief Function for writing the proper notification when an input is received.
 **/
 
-uint8_t rfid_counter = 0;
-
 static void pin_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action){
-    if(pin == 13)
-            ble_lbs_on_button_change(&m_lbs, 1, 0);
-    else if(pin == 14)
-            ble_lbs_on_button_change(&m_lbs, 1, 1);
-    else if(pin == 15)
-            ble_lbs_on_button_change(&m_lbs, 1, 2);
+    if(pin == 13 || pin == 14 || pin == 15){
+      hit_counter = new_hit_value();
+
+      if(pin == 13)            
+            ble_lbs_on_button_change(&m_lbs, hit_counter, 0);
+      else if(pin == 14)
+            ble_lbs_on_button_change(&m_lbs, hit_counter, 1);
+      else if(pin == 15)
+            ble_lbs_on_button_change(&m_lbs, hit_counter, 2);
+    }
+
     else if(pin == 16) {
             rfid_counter = rfid_read_event_handler();
             ble_lbs_on_button_change(&m_lbs, rfid_counter, 4);
     }
+    //hit_counter = hit_counter;
 }
 
 /**@brief Function for initializing the gpiote driver.

@@ -4,7 +4,6 @@
 #include "nrf_gpio.h"
 #include "nrf_delay.h"
 #include "app_timer.h"
-#include "ble_lbs.h"
 
 uint8_t rfid_value = 0xFF;
 uint8_t rfid_counter = 1;
@@ -25,9 +24,30 @@ static const nrf_drv_twi_t twi_rfid = NRF_DRV_TWI_INSTANCE(1);
 
 APP_TIMER_DEF(read_timer);
 
-void read_rfid_shield(void){
-  nrf_delay_ms(200);
-}
+void ready_rfid_shield(void){
+  nrf_drv_twi_tx(&twi_rfid, ADR_RFID_SLAVE, rfid_init_array_1, sizeof(rfid_init_array_1), false);
+  
+   nrf_delay_ms(3);
+   nrf_drv_twi_rx(&twi_rfid, ADR_RFID_SLAVE, &dummy_array, 7);
+
+   nrf_delay_ms(3);
+   nrf_drv_twi_rx(&twi_rfid, ADR_RFID_SLAVE, &dummy_array, 14);
+   
+   nrf_delay_ms(3);
+   nrf_drv_twi_tx(&twi_rfid, ADR_RFID_SLAVE, rfid_init_array_2, sizeof(rfid_init_array_2), false);
+
+   nrf_delay_ms(3);
+   nrf_drv_twi_rx(&twi_rfid, ADR_RFID_SLAVE, &dummy_array, 7);
+    
+   nrf_delay_ms(3);
+   nrf_drv_twi_rx(&twi_rfid, ADR_RFID_SLAVE, &dummy_array, 9);
+   
+   nrf_delay_ms(3);
+   nrf_drv_twi_tx(&twi_rfid, ADR_RFID_SLAVE, rfid_init_array_3, sizeof(rfid_init_array_3), false);
+
+   nrf_delay_ms(3);
+   nrf_drv_twi_rx(&twi_rfid, ADR_RFID_SLAVE, &dummy_array, 7);
+  }
 
 /** @brief  Function which handles the timer events.
  *
@@ -36,15 +56,16 @@ void read_rfid_shield(void){
 uint8_t rfid_read_event_handler(void)
 {
     nrf_gpio_pin_clear(READ_PIN);
-    read_rfid_shield();
+    ready_rfid_shield();
      
       if (rfid_counter == 0)
           rfid_counter = 1;
       else
           rfid_counter++;
       
+    nrf_gpio_pin_set(READ_PIN);
       return rfid_counter;
-    nrf_gpio_pin_set(READ_PIN);  
+ 
 };
 
 
@@ -68,26 +89,5 @@ void twi_rfid_init(void)
    nrf_drv_twi_enable(&twi_rfid);
 
    //Initializes the RFID-shield
-   nrf_drv_twi_tx(&twi_rfid, ADR_RFID_SLAVE, rfid_init_array_1, sizeof(rfid_init_array_1), false);
-  
-   nrf_delay_ms(3);
-   nrf_drv_twi_rx(&twi_rfid, ADR_RFID_SLAVE, &dummy_array, 7);
-
-   nrf_delay_ms(3);
-   nrf_drv_twi_rx(&twi_rfid, ADR_RFID_SLAVE, &dummy_array, 14);
-   
-   nrf_delay_ms(3);
-   nrf_drv_twi_tx(&twi_rfid, ADR_RFID_SLAVE, rfid_init_array_2, sizeof(rfid_init_array_2), false);
-
-   nrf_delay_ms(3);
-   nrf_drv_twi_rx(&twi_rfid, ADR_RFID_SLAVE, &dummy_array, 7);
-    
-   nrf_delay_ms(3);
-   nrf_drv_twi_rx(&twi_rfid, ADR_RFID_SLAVE, &dummy_array, 9);
-   
-   nrf_delay_ms(3);
-   nrf_drv_twi_tx(&twi_rfid, ADR_RFID_SLAVE, rfid_init_array_3, sizeof(rfid_init_array_3), false);
-
-   nrf_delay_ms(3);
-   nrf_drv_twi_rx(&twi_rfid, ADR_RFID_SLAVE, &dummy_array, 7);
+   ready_rfid_shield();
 };
