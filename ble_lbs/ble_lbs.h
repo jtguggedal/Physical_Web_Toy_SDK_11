@@ -43,10 +43,10 @@
 
 #define LBS_UUID_BASE           {0x23, 0xD1, 0xBC, 0xEA, 0x5F, 0x78, 0x23, 0x15, \
                                 0xDE, 0xEF, 0x12, 0x12, 0x00, 0x00, 0x00, 0x00}
-#define LBS_UUID_SERVICE        0x1523
-#define LBS_UUID_BUTTON_CHAR    0x1524
-#define LBS_UUID_LED_CHAR       0x1525
-#define LBS_UUID_LED_CHAR_2     0x1526
+#define LBS_UUID_SERVICE        0x7723
+#define LBS_UUID_BUTTON_CHAR    0x7724
+#define LBS_UUID_LED_CHAR       0x7725
+#define LBS_UUID_LED_CHAR_2     0x7726
 
 // Forward declaration of the ble_lbs_t type. 
 typedef struct ble_lbs_s ble_lbs_t;

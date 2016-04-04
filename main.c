@@ -53,7 +53,7 @@
 #define IR_RECEIVER_PIN_2               14
 #define IR_RECEIVER_PIN_3               15
 
-#define DEVICE_NAME                     "RED CAR"                                        /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "DONTCONNECT"                                        /**< Name of device. Will be included in the advertising data. */
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
 #define APP_ADV_TIMEOUT_IN_SECONDS      BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED       /**< The advertising time-out (in units of seconds). When set to 0, we will never time out. */
@@ -352,7 +352,7 @@ static void on_ble_evt(ble_evt_t * p_ble_evt)
             
             user_connected = false;
             advertising_start();
-            twi_clear_motorshield();
+            //twi_clear_motorshield();
             break;
 
         case BLE_GAP_EVT_SEC_PARAMS_REQUEST:
