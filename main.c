@@ -429,6 +429,8 @@ static void ble_stack_init(void)
 /**@brief Function for writing the proper notification when an input is received.
 **/
 
+uint8_t rfid_counter = 0;
+
 static void pin_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action){
     if(pin == 13)
             ble_lbs_on_button_change(&m_lbs, 1, 0);
@@ -436,8 +438,10 @@ static void pin_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t ac
             ble_lbs_on_button_change(&m_lbs, 1, 1);
     else if(pin == 15)
             ble_lbs_on_button_change(&m_lbs, 1, 2);
-    else if(pin == 16)
-            timer_read_event_handler();
+    else if(pin == 16) {
+            rfid_counter = rfid_read_event_handler();
+            ble_lbs_on_button_change(&m_lbs, rfid_counter, 4);
+    }
 }
 
 /**@brief Function for initializing the gpiote driver.
@@ -498,8 +502,8 @@ int main(void)
     services_init();
     advertising_init();
     conn_params_init();
-    //twi_motordriver_init();
-    //twi_rfid_init();
+    twi_motordriver_init();
+    twi_rfid_init();
     nrf_gpiote_init();
     
     advertising_start();

@@ -4,8 +4,6 @@
 #include "nrf_drv_timer.h"
 #include "ble_lbs.h"
 
-static ble_lbs_t                        m_lbs;                                      /**< LED Button Service instance. */
-
 // Define pins for I2C-communication with the RFID-module
 #define SDA_RFID_PIN         24
 #define SCL_RFID_PIN         25
@@ -18,5 +16,5 @@ static ble_lbs_t                        m_lbs;                                  
 
 // Prototypes for functions used in twi_rfid_driver.c
 
-void timer_read_event_handler(void);
+uint8_t rfid_read_event_handler(void);
 void twi_rfid_init(void);
