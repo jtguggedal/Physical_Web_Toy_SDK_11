@@ -53,7 +53,7 @@
 #define IR_RECEIVER_PIN_2               14
 #define IR_RECEIVER_PIN_3               15
 
-#define DEVICE_NAME                     "MS GREEN"                                        /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "RED CAR"                                        /**< Name of device. Will be included in the advertising data. */
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
 #define APP_ADV_TIMEOUT_IN_SECONDS      BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED       /**< The advertising time-out (in units of seconds). When set to 0, we will never time out. */
@@ -436,6 +436,8 @@ static void pin_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t ac
             ble_lbs_on_button_change(&m_lbs, 1, 1);
     else if(pin == 15)
             ble_lbs_on_button_change(&m_lbs, 1, 2);
+    else if(pin == 16)
+            timer_read_event_handler();
 }
 
 /**@brief Function for initializing the gpiote driver.
@@ -449,7 +451,7 @@ void nrf_gpiote_init(void){
         err_code = nrf_drv_gpiote_init();
       }
     APP_ERROR_CHECK(err_code);
-    nrf_drv_gpiote_in_config_t config = GPIOTE_CONFIG_IN_SENSE_LOTOHI(false);
+    nrf_drv_gpiote_in_config_t config = GPIOTE_CONFIG_IN_SENSE_TOGGLE(false);
     config.pull = NRF_GPIO_PIN_PULLDOWN;
 
     nrf_drv_gpiote_in_init(13, &config, pin_event_handler);
@@ -496,8 +498,8 @@ int main(void)
     services_init();
     advertising_init();
     conn_params_init();
-    twi_motordriver_init();
-    twi_rfid_init();
+    //twi_motordriver_init();
+    //twi_rfid_init();
     nrf_gpiote_init();
     
     advertising_start();

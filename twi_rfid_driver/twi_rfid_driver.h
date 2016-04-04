@@ -11,7 +11,7 @@ static ble_lbs_t                        m_lbs;                                  
 #define SCL_RFID_PIN         25
 
 // Define the slave address
-#define ADR_RFID_SLAVE       0x61
+#define ADR_RFID_SLAVE       0x24
 
 // Defines timer values
 #define RFID_APP_TIMER_PRESCALER       15
@@ -21,8 +21,10 @@ static ble_lbs_t                        m_lbs;                                  
 //Defines the LED used for RFID-reading
 #define READ_LED            20
 
+
+
 // Prototypes for functions used in twi_rfid_driver.c
 
-void timer_read_event_handler(void* p_context);
+void timer_read_event_handler(void);
 void twi_rfid_timer_init(void);
 void twi_rfid_init(void);

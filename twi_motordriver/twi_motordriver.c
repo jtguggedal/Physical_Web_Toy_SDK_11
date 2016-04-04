@@ -42,11 +42,10 @@ void twi_motordriver_init(void)
 };
 
 
-
-
 /** @brief  Function to set up the motor shield for communication
  *
  */
+
 void twi_init_motorshield(void){
 
         // Set the required initialization packages

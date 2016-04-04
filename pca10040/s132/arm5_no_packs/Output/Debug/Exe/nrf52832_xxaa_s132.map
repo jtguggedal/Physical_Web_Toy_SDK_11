@@ -679,6 +679,21 @@ Discarded input sections
                 0x00000000        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
  .text.sd_ble_opt_get
                 0x00000000        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .data.rfid_init_array_1
+                0x00000000        0x9 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .data.rfid_init_array_2
+                0x00000000        0xc Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .data.rfid_init_array_3
+                0x00000000        0xb Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .bss.dummy_array
+                0x00000000        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .bss.read_timer_data
+                0x00000000       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .rodata.read_timer
+                0x00000000        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .rodata        0x00000000       0x10 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .text.twi_rfid_init
+                0x00000000       0xe8 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
  .debug_macro   0x00000000      0x92e Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
  .debug_macro   0x00000000      0x189 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
  .debug_macro   0x00000000      0x11e Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
@@ -752,6 +767,10 @@ Discarded input sections
  .text          0x00000000        0x0 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
  .data          0x00000000        0x0 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
  .bss           0x00000000        0x0 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+ .text.twi_motordriver_init
+                0x00000000       0x38 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+ .text.twi_init_motorshield
+                0x00000000      0x198 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
  .debug_macro   0x00000000      0x92e Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
  .debug_macro   0x00000000      0x189 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
  .debug_macro   0x00000000      0x11e Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
@@ -836,10 +855,24 @@ Discarded input sections
                 0x00000000       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_twi_shorts_disable
                 0x00000000       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .text.nrf_twi_enable
+                0x00000000       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_twi_disable
+                0x00000000       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .text.nrf_twi_pins_set
+                0x00000000       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .text.nrf_twi_frequency_set
                 0x00000000       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_drv_common_irq_disable
                 0x00000000       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .text.nrf_drv_get_IRQn
+                0x00000000       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .text.nrf_gpio_pin_set
+                0x00000000       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .text.nrf_gpio_pin_clear
+                0x00000000       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .text.nrf_gpio_pin_read
+                0x00000000       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.sd_mutex_new
                 0x00000000        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.sd_mutex_acquire
@@ -924,8 +957,16 @@ Discarded input sections
                 0x00000000        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.sd_radio_request
                 0x00000000        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .rodata.m_default_config
+                0x00000000       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .text.twi_clear_bus
+                0x00000000      0x2cc Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .text.nrf_drv_twi_init
+                0x00000000       0xf4 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_drv_twi_uninit
                 0x00000000       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .text.nrf_drv_twi_enable
+                0x00000000       0x3c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_drv_twi_disable
                 0x00000000       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_drv_twi_data_count_get
@@ -2095,7 +2136,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x22 Output/nrf52832_xxaa_s132 Debug/Obj/app_uart_fifo.o
  .debug_macro   0x00000000       0x37 Output/nrf52832_xxaa_s132 Debug/Obj/app_uart_fifo.o
  .debug_line    0x00000000      0x963 Output/nrf52832_xxaa_s132 Debug/Obj/app_uart_fifo.o
- .debug_str     0x00000000    0x6f5ef Output/nrf52832_xxaa_s132 Debug/Obj/app_uart_fifo.o
+ .debug_str     0x00000000    0x6f5f5 Output/nrf52832_xxaa_s132 Debug/Obj/app_uart_fifo.o
  .comment       0x00000000       0x4f Output/nrf52832_xxaa_s132 Debug/Obj/app_uart_fifo.o
  .ARM.attributes
                 0x00000000       0x39 Output/nrf52832_xxaa_s132 Debug/Obj/app_uart_fifo.o
@@ -6225,7 +6266,7 @@ Linker script and memory map
                 0x00000001                . = ASSERT (((__init_rodata_start__ == __init_rodata_end__) || ((__init_rodata_end__ >= __FLASH_segment_start__) && (__init_rodata_end__ <= __FLASH_segment_end__))), error: .init_rodata is too large to fit in FLASH memory segment)
                 0x0001c71c                __text_load_start__ = ALIGN (__init_rodata_end__, 0x4)
 
-.text           0x0001c71c     0x6350
+.text           0x0001c71c     0x5c3c
                 0x0001c71c                __text_start__ = .
  *(.text .text.* .glue_7t .glue_7 .gnu.linkonce.t.* .gcc_except_table .ARM.extab* .gnu.linkonce.armextab.*)
  .glue_7        0x00000000        0x0 linker stubs
@@ -6287,520 +6328,486 @@ Linker script and memory map
  .text.ble_stack_init
                 0x0001ccf4      0x11c Output/nrf52832_xxaa_s132 Debug/Obj/main.o
  .text.pin_event_handler
-                0x0001ce10       0x4c Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+                0x0001ce10       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
  .text.nrf_gpiote_init
-                0x0001ce5c       0xa4 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
-                0x0001ce5c                nrf_gpiote_init
+                0x0001ce68       0xa4 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+                0x0001ce68                nrf_gpiote_init
  .text.advertising_timer_init
-                0x0001cf00       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/main.o
-                0x0001cf00                advertising_timer_init
+                0x0001cf0c       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+                0x0001cf0c                advertising_timer_init
  .text.power_manage
-                0x0001cf2c       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/main.o
- .text.main     0x0001cf58       0x3c Output/nrf52832_xxaa_s132 Debug/Obj/main.o
-                0x0001cf58                main
+                0x0001cf38       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+ .text.main     0x0001cf64       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+                0x0001cf64                main
  .text.advertising_init_eddystone
-                0x0001cf94       0x94 Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
-                0x0001cf94                advertising_init_eddystone
+                0x0001cf98       0x94 Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
+                0x0001cf98                advertising_init_eddystone
  .text.nrf_gpio_pin_set
-                0x0001d028       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+                0x0001d02c       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
  .text.nrf_gpio_pin_clear
-                0x0001d04c       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+                0x0001d050       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
  .text.timer_read_event_handler
-                0x0001d070       0x74 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
-                0x0001d070                timer_read_event_handler
- .text.twi_rfid_timer_init
-                0x0001d0e4       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
-                0x0001d0e4                twi_rfid_timer_init
- .text.twi_rfid_init
-                0x0001d110       0x38 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
-                0x0001d110                twi_rfid_init
+                0x0001d074       0x7c Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+                0x0001d074                timer_read_event_handler
  .text.nrf_gpio_pin_set
-                0x0001d148       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+                0x0001d0f0       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
  .text.nrf_gpio_pin_clear
-                0x0001d16c       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
- .text.twi_motordriver_init
-                0x0001d190       0x38 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
-                0x0001d190                twi_motordriver_init
- .text.twi_init_motorshield
-                0x0001d1c8      0x198 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
-                0x0001d1c8                twi_init_motorshield
+                0x0001d114       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
  .text.twi_clear_motorshield
-                0x0001d360       0xec Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
-                0x0001d360                twi_clear_motorshield
+                0x0001d138       0xec Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+                0x0001d138                twi_clear_motorshield
  .text.twi_set_motor
-                0x0001d44c       0xa0 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
-                0x0001d44c                twi_set_motor
+                0x0001d224       0xa0 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+                0x0001d224                twi_set_motor
  .text.twi_set_speed
-                0x0001d4ec       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
-                0x0001d4ec                twi_set_speed
+                0x0001d2c4       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+                0x0001d2c4                twi_set_speed
  .text.twi_set_motor_dir
-                0x0001d53c      0x218 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
-                0x0001d53c                twi_set_motor_dir
+                0x0001d314      0x218 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+                0x0001d314                twi_set_motor_dir
  .text.read_bit
-                0x0001d754       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
-                0x0001d754                read_bit
+                0x0001d52c       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
+                0x0001d52c                read_bit
  .text.nrf_twi_task_trigger
-                0x0001d788       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001d560       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_twi_event_clear
-                0x0001d7a8       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001d580       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_twi_event_check
-                0x0001d7c8       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001d5a0       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_twi_int_enable
-                0x0001d7f4       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001d5cc       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_twi_int_disable
-                0x0001d810       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .text.nrf_twi_enable
-                0x0001d82c       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .text.nrf_twi_pins_set
-                0x0001d848       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .text.nrf_twi_frequency_set
-                0x0001d870       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001d5e8       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_twi_errorsrc_get_and_clear
-                0x0001d88c       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001d604       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_twi_address_set
-                0x0001d8b4       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001d62c       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_twi_rxd_get
-                0x0001d8d4       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001d64c       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_twi_txd_set
-                0x0001d8f0       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001d668       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_twi_shorts_set
-                0x0001d910       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .text.nrf_drv_get_IRQn
-                0x0001d92c       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .text.nrf_gpio_pin_set
-                0x0001d94c       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .text.nrf_gpio_pin_clear
-                0x0001d970       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .text.nrf_gpio_pin_read
-                0x0001d994       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .text.twi_clear_bus
-                0x0001d9bc      0x2cc Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .text.nrf_drv_twi_init
-                0x0001dc88       0xf4 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
-                0x0001dc88                nrf_drv_twi_init
- .text.nrf_drv_twi_enable
-                0x0001dd7c       0x3c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
-                0x0001dd7c                nrf_drv_twi_enable
+                0x0001d688       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.twi_send_byte
-                0x0001ddb8       0x60 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001d6a4       0x60 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.twi_receive_byte
-                0x0001de18       0x6c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001d704       0x6c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.twi_transfer
-                0x0001de84      0x168 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001d770      0x168 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.twi_tx_start_transfer
-                0x0001dfec       0xd8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001d8d8       0xd8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.twi_rx_start_transfer
-                0x0001e0c4       0xcc Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001d9b0       0xcc Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.twi_xfer
-                0x0001e190      0x10c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001da7c      0x10c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.nrf_drv_twi_xfer
-                0x0001e29c       0x54 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
-                0x0001e29c                nrf_drv_twi_xfer
+                0x0001db88       0x54 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001db88                nrf_drv_twi_xfer
  .text.nrf_drv_twi_tx
-                0x0001e2f0       0x5c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
-                0x0001e2f0                nrf_drv_twi_tx
+                0x0001dbdc       0x5c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001dbdc                nrf_drv_twi_tx
  .text.nrf_drv_twi_rx
-                0x0001e34c       0x54 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
-                0x0001e34c                nrf_drv_twi_rx
+                0x0001dc38       0x54 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001dc38                nrf_drv_twi_rx
  .text.irq_handler_twi
-                0x0001e3a0      0x140 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001dc8c      0x140 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .text.SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0_IRQHandler
-                0x0001e4e0       0x18 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
-                0x0001e4e0                SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0_IRQHandler
+                0x0001ddcc       0x18 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001ddcc                SPIM0_SPIS0_TWIM0_TWIS0_SPI0_TWI0_IRQHandler
  .text.SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1_IRQHandler
-                0x0001e4f8       0x14 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
-                0x0001e4f8                SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1_IRQHandler
+                0x0001dde4       0x14 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x0001dde4                SPIM1_SPIS1_TWIM1_TWIS1_SPI1_TWI1_IRQHandler
  .text.sd_ble_gatts_service_add
-                0x0001e50c        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x0001ddf8        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
  .text.sd_ble_gatts_characteristic_add
-                0x0001e514        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x0001de00        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
  .text.sd_ble_gatts_hvx
-                0x0001e51c        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x0001de08        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
  .text.sd_ble_uuid_vs_add
-                0x0001e524        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x0001de10        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
  .text.on_connect
-                0x0001e52c       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x0001de18       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
  .text.on_disconnect
-                0x0001e548       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x0001de34       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
  .text.on_write
-                0x0001e564       0x40 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x0001de50       0x40 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
  .text.ble_lbs_on_ble_evt
-                0x0001e5a4       0x40 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
-                0x0001e5a4                ble_lbs_on_ble_evt
+                0x0001de90       0x40 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x0001de90                ble_lbs_on_ble_evt
  .text.led_char_add
-                0x0001e5e4       0xf0 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x0001ded0       0xf0 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
  .text.button_char_add
-                0x0001e6d4      0x144 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x0001dfc0      0x144 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
  .text.ble_lbs_init
-                0x0001e818       0xa4 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
-                0x0001e818                ble_lbs_init
+                0x0001e104       0xa4 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x0001e104                ble_lbs_init
  .text.ble_lbs_on_button_change
-                0x0001e8bc       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
-                0x0001e8bc                ble_lbs_on_button_change
+                0x0001e1a8       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x0001e1a8                ble_lbs_on_button_change
  .text.bsp_led_indication
-                0x0001e914      0x698 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+                0x0001e200      0x698 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
  .text.bsp_indication_set
-                0x0001efac       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
-                0x0001efac                bsp_indication_set
+                0x0001e898       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+                0x0001e898                bsp_indication_set
  .text.sd_ble_gap_address_get
-                0x0001efe0        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001e8cc        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.sd_ble_gap_adv_data_set
-                0x0001efe8        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001e8d4        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.sd_ble_gap_appearance_get
-                0x0001eff0        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001e8dc        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.sd_ble_gap_device_name_get
-                0x0001eff8        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001e8e4        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.sd_ble_uuid_encode
-                0x0001f000        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001e8ec        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.uint16_encode
-                0x0001f008       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001e8f4       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.tk_value_encode
-                0x0001f038       0x9c Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001e924       0x9c Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.le_role_encode
-                0x0001f0d4       0xd8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001e9c0       0xd8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.ble_device_addr_encode
-                0x0001f1ac       0xcc Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001ea98       0xcc Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.name_encode
-                0x0001f278      0x11c Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001eb64      0x11c Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.appearance_encode
-                0x0001f394       0x98 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001ec80       0x98 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.flags_encode
-                0x0001f42c       0x80 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001ed18       0x80 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.sec_mgr_oob_flags_encode
-                0x0001f4ac       0x80 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001ed98       0x80 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.tx_power_level_encode
-                0x0001f52c       0x80 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001ee18       0x80 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.uuid_list_sized_encode
-                0x0001f5ac      0x140 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001ee98      0x140 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.uuid_list_encode
-                0x0001f6ec       0x60 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001efd8       0x60 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.conn_int_check
-                0x0001f74c       0x84 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001f038       0x84 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.conn_int_encode
-                0x0001f7d0       0xc0 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001f0bc       0xc0 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.manuf_specific_data_encode
-                0x0001f890       0xe4 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001f17c       0xe4 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.service_data_encode
-                0x0001f974      0x104 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001f260      0x104 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.adv_data_encode
-                0x0001fa78      0x240 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
-                0x0001fa78                adv_data_encode
+                0x0001f364      0x240 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001f364                adv_data_encode
  .text.advdata_check
-                0x0001fcb8       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001f5a4       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.srdata_check
-                0x0001fce0       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001f5cc       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .text.ble_advdata_set
-                0x0001fd04       0xc8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
-                0x0001fd04                ble_advdata_set
+                0x0001f5f0       0xc8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x0001f5f0                ble_advdata_set
  .text.sd_ble_gap_conn_param_update
-                0x0001fdcc        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001f6b8        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .text.sd_ble_gap_disconnect
-                0x0001fdd4        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001f6c0        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .text.sd_ble_gap_ppcp_set
-                0x0001fddc        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001f6c8        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .text.sd_ble_gap_ppcp_get
-                0x0001fde4        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001f6d0        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .text.uint16_decode
-                0x0001fdec       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001f6d8       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .text.ble_srv_is_notification_enabled
-                0x0001fe18       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001f704       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .text.is_conn_params_ok
-                0x0001fe44       0x38 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001f730       0x38 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .text.update_timeout_handler
-                0x0001fe7c       0xb4 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001f768       0xb4 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .text.ble_conn_params_init
-                0x0001ff30       0x98 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
-                0x0001ff30                ble_conn_params_init
+                0x0001f81c       0x98 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001f81c                ble_conn_params_init
  .text.conn_params_negotiation
-                0x0001ffc8       0xac Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001f8b4       0xac Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .text.on_connect
-                0x00020074       0x48 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001f960       0x48 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .text.on_disconnect
-                0x000200bc       0x4c Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001f9a8       0x4c Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .text.on_write
-                0x00020108       0x68 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001f9f4       0x68 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .text.on_conn_params_update
-                0x00020170       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001fa5c       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .text.ble_conn_params_on_ble_evt
-                0x00020194       0x4c Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
-                0x00020194                ble_conn_params_on_ble_evt
+                0x0001fa80       0x4c Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x0001fa80                ble_conn_params_on_ble_evt
  .text.nrf_delay_ms
-                0x000201e0       0xa4 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
-                0x000201e0                nrf_delay_ms
+                0x0001facc       0xa4 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
+                0x0001facc                nrf_delay_ms
  .text.NVIC_EnableIRQ
-                0x00020284       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
+                0x0001fb70       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
  .text.NVIC_ClearPendingIRQ
-                0x000202b4       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
+                0x0001fba0       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
  .text.NVIC_SetPriority
-                0x000202e8       0x54 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
+                0x0001fbd4       0x54 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
  .text.nrf_drv_common_irq_enable
-                0x0002033c       0x38 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
-                0x0002033c                nrf_drv_common_irq_enable
+                0x0001fc28       0x38 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
+                0x0001fc28                nrf_drv_common_irq_enable
  .text.nrf_gpiote_event_is_set
-                0x00020374       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001fc60       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpiote_event_clear
-                0x0002039c       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001fc88       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpiote_event_addr_get
-                0x000203cc       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001fcb8       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpiote_int_enable
-                0x000203ec       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001fcd8       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpiote_int_disable
-                0x0002040c       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001fcf8       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpiote_int_is_enabled
-                0x0002042c       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001fd18       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpiote_event_enable
-                0x00020450       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001fd3c       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpiote_event_disable
-                0x00020484       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001fd70       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpiote_event_configure
-                0x000204b8       0x68 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001fda4       0x68 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpiote_event_pin_get
-                0x00020520       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001fe0c       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpiote_event_polarity_get
-                0x0002054c       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001fe38       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpio_cfg
-                0x00020578       0x4c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001fe64       0x4c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpio_cfg_input
-                0x000205c4       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001feb0       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpio_cfg_watcher
-                0x000205ec       0x38 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001fed8       0x38 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpio_cfg_sense_set
-                0x00020624       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001ff10       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpio_pins_read
-                0x0002067c       0x18 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001ff68       0x18 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_gpio_pin_sense_get
-                0x00020694       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001ff80       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.pin_in_use_by_te
-                0x000206c0       0x44 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001ffac       0x44 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.pin_in_use_by_port
-                0x00020704       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0001fff0       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.pin_in_use_by_gpiote
-                0x00020734       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x00020020       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.pin_in_use_by_te_set
-                0x00020760       0x54 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0002004c       0x54 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.pin_in_use_clear
-                0x000207b4       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x000200a0       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.channel_port_get
-                0x000207d8       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x000200c4       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.channel_handler_get
-                0x000207fc       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x000200e8       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.channel_port_alloc
-                0x0002081c       0x74 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x00020108       0x74 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.channel_free
-                0x00020890       0x38 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x0002017c       0x38 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .text.nrf_drv_gpiote_init
-                0x000208c8       0x70 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
-                0x000208c8                nrf_drv_gpiote_init
+                0x000201b4       0x70 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x000201b4                nrf_drv_gpiote_init
  .text.nrf_drv_gpiote_is_init
-                0x00020938       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
-                0x00020938                nrf_drv_gpiote_is_init
+                0x00020224       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x00020224                nrf_drv_gpiote_is_init
  .text.nrf_drv_gpiote_in_init
-                0x0002095c       0xb4 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
-                0x0002095c                nrf_drv_gpiote_in_init
+                0x00020248       0xb4 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x00020248                nrf_drv_gpiote_in_init
  .text.nrf_drv_gpiote_in_event_enable
-                0x00020a10       0xd8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
-                0x00020a10                nrf_drv_gpiote_in_event_enable
+                0x000202fc       0xd8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x000202fc                nrf_drv_gpiote_in_event_enable
  .text.nrf_drv_gpiote_in_event_disable
-                0x00020ae8       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
-                0x00020ae8                nrf_drv_gpiote_in_event_disable
+                0x000203d4       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x000203d4                nrf_drv_gpiote_in_event_disable
  .text.GPIOTE_IRQHandler
-                0x00020b38      0x218 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
-                0x00020b38                GPIOTE_IRQHandler
+                0x00020424      0x218 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x00020424                GPIOTE_IRQHandler
  .text.nrf_uart_event_clear
-                0x00020d50       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x0002063c       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.nrf_uart_event_check
-                0x00020d70       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x0002065c       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.nrf_uart_int_enable_check
-                0x00020d9c       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x00020688       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.nrf_uart_int_disable
-                0x00020dc8       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x000206b4       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.nrf_uart_errorsrc_get_and_clear
-                0x00020de4       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x000206d0       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.nrf_uart_rxd_get
-                0x00020e0c       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x000206f8       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.nrf_uart_txd_set
-                0x00020e28       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x00020714       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.nrf_uart_task_trigger
-                0x00020e48       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x00020734       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.nrf_uarte_event_clear
-                0x00020e68       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x00020754       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.nrf_uarte_event_check
-                0x00020e88       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x00020774       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.nrf_uarte_shorts_disable
-                0x00020eb4       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x000207a0       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.nrf_uarte_errorsrc_get_and_clear
-                0x00020edc       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x000207c8       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.nrf_uarte_tx_amount_get
-                0x00020f04       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x000207f0       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.nrf_uarte_rx_amount_get
-                0x00020f20       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
- .text.tx_byte  0x00020f3c       0x48 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
- .text.rx_byte  0x00020f84       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x0002080c       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+ .text.tx_byte  0x00020828       0x48 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+ .text.rx_byte  0x00020870       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.rx_done_event
-                0x00020fdc       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x000208c8       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.tx_done_event
-                0x00021010       0x3c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x000208fc       0x3c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.uart_irq_handler
-                0x0002104c      0x1c8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x00020938      0x1c8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.uarte_irq_handler
-                0x00021214      0x158 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x00020b00      0x158 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .text.UARTE0_UART0_IRQHandler
-                0x0002136c       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
-                0x0002136c                UARTE0_UART0_IRQHandler
+                0x00020c58       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x00020c58                UARTE0_UART0_IRQHandler
  .text.app_button_enable
-                0x00021388       0x44 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
-                0x00021388                app_button_enable
+                0x00020c74       0x44 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+                0x00020c74                app_button_enable
  .text.app_button_disable
-                0x000213cc       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
-                0x000213cc                app_button_disable
+                0x00020cb8       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+                0x00020cb8                app_button_disable
  .text.app_error_handler
-                0x0002141c       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
-                0x0002141c                app_error_handler
+                0x00020d08       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
+                0x00020d08                app_error_handler
  .text.app_error_save_and_stop
-                0x0002144c       0x98 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
-                0x0002144c                app_error_save_and_stop
+                0x00020d38       0x98 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
+                0x00020d38                app_error_save_and_stop
  .text.app_error_fault_handler
-                0x000214e4       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
-                0x000214e4                app_error_fault_handler
+                0x00020dd0       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
+                0x00020dd0                app_error_fault_handler
  .text.NVIC_EnableIRQ
-                0x00021508       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00020df4       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.NVIC_DisableIRQ
-                0x00021538       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00020e24       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.NVIC_SetPendingIRQ
-                0x0002156c       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00020e58       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.NVIC_ClearPendingIRQ
-                0x000215a0       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00020e8c       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.NVIC_SetPriority
-                0x000215d4       0x54 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00020ec0       0x54 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.NVIC_GetPriority
-                0x00021628       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00020f14       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.is_word_aligned
-                0x00021678       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00020f64       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.current_int_priority_get
-                0x0002169c       0x3c Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00020f88       0x3c Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.rtc1_init
-                0x000216d8       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00020fc4       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.rtc1_start
-                0x000216fc       0xc0 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00020fe8       0xc0 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.rtc1_stop
-                0x000217bc      0x14c Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x000210a8      0x14c Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.rtc1_counter_get
-                0x00021908       0x18 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x000211f4       0x18 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.ticks_diff_get
-                0x00021920       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x0002120c       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.rtc1_compare0_set
-                0x00021940       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x0002122c       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.timer_list_insert
-                0x00021960       0xb4 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x0002124c       0xb4 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.timer_list_remove
-                0x00021a14       0xa4 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021300       0xa4 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.timer_timeouts_check_sched
-                0x00021ab8        0xc Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x000213a4        0xc Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.timer_list_handler_sched
-                0x00021ac4        0xc Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x000213b0        0xc Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.timeout_handler_exec
-                0x00021ad0       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x000213bc       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.timer_timeouts_check
-                0x00021b28       0xc4 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021414       0xc4 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.elapsed_ticks_acquire
-                0x00021bec       0x80 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x000214d8       0x80 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.list_deletions_handler
-                0x00021c6c       0xc0 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021558       0xc0 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.expired_timers_handler
-                0x00021d2c       0x9c Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021618       0x9c Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.list_insertions_handler
-                0x00021dc8      0x184 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x000216b4      0x184 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.compare_reg_update
-                0x00021f4c      0x130 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021838      0x130 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.timer_list_handler
-                0x0002207c       0x78 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021968       0x78 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.user_op_enque
-                0x000220f4       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x000219e0       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.user_op_alloc
-                0x00022110       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x000219fc       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.timer_start_op_schedule
-                0x00022168       0x80 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021a54       0x80 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.timer_stop_op_schedule
-                0x000221e8       0x60 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021ad4       0x60 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.RTC1_IRQHandler
-                0x00022248       0x40 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
-                0x00022248                RTC1_IRQHandler
+                0x00021b34       0x40 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021b34                RTC1_IRQHandler
  .text.SWI0_EGU0_IRQHandler
-                0x00022288        0xc Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
-                0x00022288                SWI0_EGU0_IRQHandler
+                0x00021b74        0xc Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021b74                SWI0_EGU0_IRQHandler
  .text.app_timer_init
-                0x00022294       0xf8 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
-                0x00022294                app_timer_init
+                0x00021b80       0xf8 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021b80                app_timer_init
  .text.app_timer_create
-                0x0002238c       0x68 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
-                0x0002238c                app_timer_create
+                0x00021c78       0x68 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021c78                app_timer_create
  .text.user_id_get
-                0x000223f4       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021ce0       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .text.app_timer_start
-                0x00022428       0x70 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
-                0x00022428                app_timer_start
+                0x00021d14       0x70 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021d14                app_timer_start
  .text.app_timer_stop
-                0x00022498       0x4c Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
-                0x00022498                app_timer_stop
+                0x00021d84       0x4c Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00021d84                app_timer_stop
  .text.NVIC_EnableIRQ
-                0x000224e4       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00021dd0       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .text.NVIC_GetPriority
-                0x00022514       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00021e00       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .text.sd_evt_get
-                0x00022564        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00021e50        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .text.sd_softdevice_enable
-                0x0002256c        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00021e58        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .text.is_word_aligned
-                0x00022574       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00021e60       0x24 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .text.sd_ble_enable
-                0x00022598        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00021e84        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .text.sd_ble_evt_get
-                0x000225a0        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00021e8c        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .text.__sd_nvic_app_accessible_irq
-                0x000225a8       0x60 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00021e94       0x60 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .text.__sd_nvic_is_app_accessible_priority
-                0x00022608       0x3c Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00021ef4       0x3c Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .text.sd_nvic_EnableIRQ
-                0x00022644       0x88 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00021f30       0x88 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .text.softdevice_fault_handler
-                0x000226cc       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
-                0x000226cc                softdevice_fault_handler
+                0x00021fb8       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00021fb8                softdevice_fault_handler
  .text.intern_softdevice_events_execute
-                0x000226e8       0xec Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
-                0x000226e8                intern_softdevice_events_execute
+                0x00021fd4       0xec Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00021fd4                intern_softdevice_events_execute
  .text.softdevice_handler_init
-                0x000227d4       0x80 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
-                0x000227d4                softdevice_handler_init
+                0x000220c0       0x80 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x000220c0                softdevice_handler_init
  .text.softdevice_ble_evt_handler_set
-                0x00022854       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
-                0x00022854                softdevice_ble_evt_handler_set
+                0x00022140       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00022140                softdevice_ble_evt_handler_set
  .text.SWI2_EGU2_IRQHandler
-                0x00022880       0x44 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
-                0x00022880                SWI2_EGU2_IRQHandler
+                0x0002216c       0x44 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x0002216c                SWI2_EGU2_IRQHandler
  .text.softdevice_enable_get_default_config
-                0x000228c4       0x54 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
-                0x000228c4                softdevice_enable_get_default_config
+                0x000221b0       0x54 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x000221b0                softdevice_enable_get_default_config
  .text.sd_check_ram_start
-                0x00022918       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
-                0x00022918                sd_check_ram_start
+                0x00022204       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00022204                sd_check_ram_start
  .text.softdevice_enable
-                0x00022944       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
-                0x00022944                softdevice_enable
+                0x00022230       0x2c Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00022230                softdevice_enable
  .text.libc.memcpy
-                0x00022970       0x3c C:/Program Files (x86)/SEGGER/SEGGER Embedded Studio 2.16a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
-                0x00022970                __aeabi_memcpy
-                0x00022970                __aeabi_memcpy4
-                0x00022970                __aeabi_memcpy8
-                0x00022970                memcpy
+                0x0002225c       0x3c C:/Program Files (x86)/SEGGER/SEGGER Embedded Studio 2.16a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+                0x0002225c                __aeabi_memcpy
+                0x0002225c                __aeabi_memcpy4
+                0x0002225c                __aeabi_memcpy8
+                0x0002225c                memcpy
  .text.libc.memset
-                0x000229ac       0x60 C:/Program Files (x86)/SEGGER/SEGGER Embedded Studio 2.16a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
-                0x000229ac                memset
+                0x00022298       0x60 C:/Program Files (x86)/SEGGER/SEGGER Embedded Studio 2.16a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+                0x00022298                memset
  .text.libc.strlen
-                0x00022a0c       0x60 C:/Program Files (x86)/SEGGER/SEGGER Embedded Studio 2.16a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
-                0x00022a0c                strlen
-                0x00022a6c                __text_end__ = (__text_start__ + SIZEOF (.text))
-                0x00006350                __text_size__ = SIZEOF (.text)
-                0x00022a6c                __text_load_end__ = __text_end__
+                0x000222f8       0x60 C:/Program Files (x86)/SEGGER/SEGGER Embedded Studio 2.16a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+                0x000222f8                strlen
+                0x00022358                __text_end__ = (__text_start__ + SIZEOF (.text))
+                0x00005c3c                __text_size__ = SIZEOF (.text)
+                0x00022358                __text_load_end__ = __text_end__
 
 .vfp11_veneer   0x00000000        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
@@ -6811,80 +6818,75 @@ Linker script and memory map
 .iplt           0x00000000        0x0
  .iplt          0x00000000        0x0 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
                 0x00000001                . = ASSERT (((__text_start__ == __text_end__) || ((__text_end__ >= __FLASH_segment_start__) && (__text_end__ <= __FLASH_segment_end__))), error: .text is too large to fit in FLASH memory segment)
-                0x00022a6c                __dtors_load_start__ = ALIGN (__text_end__, 0x4)
+                0x00022358                __dtors_load_start__ = ALIGN (__text_end__, 0x4)
 
-.dtors          0x00022a6c        0x0
-                0x00022a6c                __dtors_start__ = .
+.dtors          0x00022358        0x0
+                0x00022358                __dtors_start__ = .
  *(SORT(.dtors.*))
  *(.dtors)
  *(.fini_array)
  *(SORT(.fini_array.*))
-                0x00022a6c                __dtors_end__ = (__dtors_start__ + SIZEOF (.dtors))
+                0x00022358                __dtors_end__ = (__dtors_start__ + SIZEOF (.dtors))
                 0x00000000                __dtors_size__ = SIZEOF (.dtors)
-                0x00022a6c                __dtors_load_end__ = __dtors_end__
+                0x00022358                __dtors_load_end__ = __dtors_end__
                 0x00000001                . = ASSERT (((__dtors_start__ == __dtors_end__) || ((__dtors_end__ >= __FLASH_segment_start__) && (__dtors_end__ <= __FLASH_segment_end__))), error: .dtors is too large to fit in FLASH memory segment)
-                0x00022a6c                __ctors_load_start__ = ALIGN (__dtors_end__, 0x4)
+                0x00022358                __ctors_load_start__ = ALIGN (__dtors_end__, 0x4)
 
-.ctors          0x00022a6c        0x0
-                0x00022a6c                __ctors_start__ = .
+.ctors          0x00022358        0x0
+                0x00022358                __ctors_start__ = .
  *(SORT(.ctors.*))
  *(.ctors)
  *(.init_array)
  *(SORT(.init_array.*))
-                0x00022a6c                __ctors_end__ = (__ctors_start__ + SIZEOF (.ctors))
+                0x00022358                __ctors_end__ = (__ctors_start__ + SIZEOF (.ctors))
                 0x00000000                __ctors_size__ = SIZEOF (.ctors)
-                0x00022a6c                __ctors_load_end__ = __ctors_end__
+                0x00022358                __ctors_load_end__ = __ctors_end__
                 0x00000001                . = ASSERT (((__ctors_start__ == __ctors_end__) || ((__ctors_end__ >= __FLASH_segment_start__) && (__ctors_end__ <= __FLASH_segment_end__))), error: .ctors is too large to fit in FLASH memory segment)
-                0x00022a6c                __rodata_load_start__ = ALIGN (__ctors_end__, 0x4)
+                0x00022358                __rodata_load_start__ = ALIGN (__ctors_end__, 0x4)
 
-.rodata         0x00022a6c      0x29e
-                0x00022a6c                __rodata_start__ = .
+.rodata         0x00022358      0x266
+                0x00022358                __rodata_start__ = .
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.advertising_timer
-                0x00022a6c        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
- .rodata        0x00022a70       0x74 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
- .rodata        0x00022ae4       0x70 Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
+                0x00022358        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+ .rodata        0x0002235c       0x70 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+ .rodata        0x000223cc       0x70 Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
  .rodata.twi_rfid
-                0x00022b54        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
- .rodata.read_timer
-                0x00022b5c        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
- .rodata        0x00022b60       0x10 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+                0x0002243c        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
  .rodata.twi_motor
-                0x00022b70        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
- .rodata        0x00022b78       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
- .rodata.m_default_config
-                0x00022ba0       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .rodata        0x00022bc0       0x10 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x00022444        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+ .rodata        0x0002244c       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+ .rodata        0x00022474       0x10 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
  .rodata.m_conn_params_timer_id
-                0x00022bd0        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
- .rodata        0x00022bd4       0x8c Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
- .rodata        0x00022c60       0xaa Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
-                0x00022d0a                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
-                0x0000029e                __rodata_size__ = SIZEOF (.rodata)
-                0x00022d0a                __rodata_load_end__ = __rodata_end__
+                0x00022484        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+ .rodata        0x00022488       0x8c Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+ .rodata        0x00022514       0xaa Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x000225be                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
+                0x00000266                __rodata_size__ = SIZEOF (.rodata)
+                0x000225be                __rodata_load_end__ = __rodata_end__
 
 .rel.dyn        0x00000000        0x0
  .rel.iplt      0x00000000        0x0 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
                 0x00000001                . = ASSERT (((__rodata_start__ == __rodata_end__) || ((__rodata_end__ >= __FLASH_segment_start__) && (__rodata_end__ <= __FLASH_segment_end__))), error: .rodata is too large to fit in FLASH memory segment)
-                0x00022d0c                __ARM.exidx_load_start__ = ALIGN (__rodata_end__, 0x4)
+                0x000225c0                __ARM.exidx_load_start__ = ALIGN (__rodata_end__, 0x4)
 
-.ARM.exidx      0x00022d0c        0x0
-                0x00022d0c                __ARM.exidx_start__ = .
-                0x00022d0c                __exidx_start = __ARM.exidx_start__
+.ARM.exidx      0x000225c0        0x0
+                0x000225c0                __ARM.exidx_start__ = .
+                0x000225c0                __exidx_start = __ARM.exidx_start__
  *(.ARM.exidx .ARM.exidx.*)
-                0x00022d0c                __ARM.exidx_end__ = (__ARM.exidx_start__ + SIZEOF (.ARM.exidx))
+                0x000225c0                __ARM.exidx_end__ = (__ARM.exidx_start__ + SIZEOF (.ARM.exidx))
                 0x00000000                __ARM.exidx_size__ = SIZEOF (.ARM.exidx)
-                0x00022d0c                __exidx_end = __ARM.exidx_end__
-                0x00022d0c                __ARM.exidx_load_end__ = __ARM.exidx_end__
+                0x000225c0                __exidx_end = __ARM.exidx_end__
+                0x000225c0                __ARM.exidx_load_end__ = __ARM.exidx_end__
                 0x00000001                . = ASSERT (((__ARM.exidx_start__ == __ARM.exidx_end__) || ((__ARM.exidx_end__ >= __FLASH_segment_start__) && (__ARM.exidx_end__ <= __FLASH_segment_end__))), error: .ARM.exidx is too large to fit in FLASH memory segment)
-                0x00022d0c                __fast_load_start__ = ALIGN (__ARM.exidx_end__, 0x4)
+                0x000225c0                __fast_load_start__ = ALIGN (__ARM.exidx_end__, 0x4)
 
-.fast           0x20002a00        0x0 load address 0x00022d0c
+.fast           0x20002a00        0x0 load address 0x000225c0
                 0x20002a00                __fast_start__ = .
  *(.fast .fast.*)
                 0x20002a00                __fast_end__ = (__fast_start__ + SIZEOF (.fast))
                 0x00000000                __fast_size__ = SIZEOF (.fast)
-                0x00022d0c                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
+                0x000225c0                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
                 0x00000001                . = ASSERT (((__fast_load_start__ == __fast_load_end__) || ((__fast_load_end__ >= __FLASH_segment_start__) && (__fast_load_end__ <= __FLASH_segment_end__))), error: .fast is too large to fit in FLASH memory segment)
 
 .fast_run       0x20002a00        0x0
@@ -6894,9 +6896,9 @@ Linker script and memory map
                 0x00000000                __fast_run_size__ = SIZEOF (.fast_run)
                 0x20002a00                __fast_run_load_end__ = __fast_run_end__
                 0x00000001                . = ASSERT (((__fast_run_start__ == __fast_run_end__) || ((__fast_run_end__ >= __RAM_segment_start__) && (__fast_run_end__ <= __RAM_segment_end__))), error: .fast_run is too large to fit in RAM memory segment)
-                0x00022d0c                __data_load_start__ = ALIGN ((__fast_load_start__ + SIZEOF (.fast)), 0x4)
+                0x000225c0                __data_load_start__ = ALIGN ((__fast_load_start__ + SIZEOF (.fast)), 0x4)
 
-.data           0x20002a00       0x38 load address 0x00022d0c
+.data           0x20002a00       0x3c load address 0x000225c0
                 0x20002a00                __data_start__ = .
  *(.data .data.* .gnu.linkonce.d.*)
  .data.m_conn_handle
@@ -6904,192 +6906,190 @@ Linker script and memory map
  *fill*         0x20002a02        0x2 
  .data.eddystone_url_data
                 0x20002a04       0x10 Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
- .data.motor    0x20002a14       0x18 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
-                0x20002a14                motor
+ .data.rfid_value
+                0x20002a14        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+                0x20002a14                rfid_value
+ .data.rfid_counter
+                0x20002a15        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+                0x20002a15                rfid_counter
+ *fill*         0x20002a16        0x2 
+ .data.motor    0x20002a18       0x18 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+                0x20002a18                motor
  .data.bit_mask
-                0x20002a2c        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
-                0x20002a2c                bit_mask
+                0x20002a30        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
+                0x20002a30                bit_mask
  .data.SystemCoreClock
-                0x20002a34        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
-                0x20002a34                SystemCoreClock
-                0x20002a38                __data_end__ = (__data_start__ + SIZEOF (.data))
-                0x00000038                __data_size__ = SIZEOF (.data)
-                0x00022d44                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
+                0x20002a38        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
+                0x20002a38                SystemCoreClock
+                0x20002a3c                __data_end__ = (__data_start__ + SIZEOF (.data))
+                0x0000003c                __data_size__ = SIZEOF (.data)
+                0x000225fc                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
 
 .igot.plt       0x00000000        0x0
  .igot.plt      0x00000000        0x0 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
                 0x00000001                . = ASSERT (((__data_load_start__ == __data_load_end__) || ((__data_load_end__ >= __FLASH_segment_start__) && (__data_load_end__ <= __FLASH_segment_end__))), error: .data is too large to fit in FLASH memory segment)
 
-.data_run       0x20002a00       0x38 load address 0x00022d0c
+.data_run       0x20002a00       0x3c load address 0x000225c0
                 0x20002a00                __data_run_start__ = .
-                0x20002a38                . = MAX ((__data_run_start__ + SIZEOF (.data)), .)
- *fill*         0x20002a00       0x38 
-                0x20002a38                __data_run_end__ = (__data_run_start__ + SIZEOF (.data_run))
-                0x00000038                __data_run_size__ = SIZEOF (.data_run)
-                0x20002a38                __data_run_load_end__ = __data_run_end__
+                0x20002a3c                . = MAX ((__data_run_start__ + SIZEOF (.data)), .)
+ *fill*         0x20002a00       0x3c 
+                0x20002a3c                __data_run_end__ = (__data_run_start__ + SIZEOF (.data_run))
+                0x0000003c                __data_run_size__ = SIZEOF (.data_run)
+                0x20002a3c                __data_run_load_end__ = __data_run_end__
                 0x00000001                . = ASSERT (((__data_run_start__ == __data_run_end__) || ((__data_run_end__ >= __RAM_segment_start__) && (__data_run_end__ <= __RAM_segment_end__))), error: .data_run is too large to fit in RAM memory segment)
-                0x00022d44                __tdata_load_start__ = ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4)
+                0x000225fc                __tdata_load_start__ = ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4)
 
-.tdata          0x20002a38        0x0 load address 0x00022d44
-                0x20002a38                __tdata_start__ = .
+.tdata          0x20002a3c        0x0 load address 0x000225fc
+                0x20002a3c                __tdata_start__ = .
  *(.tdata .tdata.*)
-                0x20002a38                __tdata_end__ = (__tdata_start__ + SIZEOF (.tdata))
+                0x20002a3c                __tdata_end__ = (__tdata_start__ + SIZEOF (.tdata))
                 0x00000000                __tdata_size__ = SIZEOF (.tdata)
-                0x00022d44                __tdata_load_end__ = (__tdata_load_start__ + SIZEOF (.tdata))
-                0x00022d44                __FLASH_segment_used_end__ = (ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4) + SIZEOF (.tdata))
-                0x00022d44                __FLASH_segment_used_size__ = (__FLASH_segment_used_end__ - __FLASH_segment_start__)
+                0x000225fc                __tdata_load_end__ = (__tdata_load_start__ + SIZEOF (.tdata))
+                0x000225fc                __FLASH_segment_used_end__ = (ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4) + SIZEOF (.tdata))
+                0x000225fc                __FLASH_segment_used_size__ = (__FLASH_segment_used_end__ - __FLASH_segment_start__)
                 0x00000001                . = ASSERT (((__tdata_load_start__ == __tdata_load_end__) || ((__tdata_load_end__ >= __FLASH_segment_start__) && (__tdata_load_end__ <= __FLASH_segment_end__))), error: .tdata is too large to fit in FLASH memory segment)
 
-.tdata_run      0x20002a38        0x0
-                0x20002a38                __tdata_run_start__ = .
-                0x20002a38                . = MAX ((__tdata_run_start__ + SIZEOF (.tdata)), .)
-                0x20002a38                __tdata_run_end__ = (__tdata_run_start__ + SIZEOF (.tdata_run))
+.tdata_run      0x20002a3c        0x0
+                0x20002a3c                __tdata_run_start__ = .
+                0x20002a3c                . = MAX ((__tdata_run_start__ + SIZEOF (.tdata)), .)
+                0x20002a3c                __tdata_run_end__ = (__tdata_run_start__ + SIZEOF (.tdata_run))
                 0x00000000                __tdata_run_size__ = SIZEOF (.tdata_run)
-                0x20002a38                __tdata_run_load_end__ = __tdata_run_end__
+                0x20002a3c                __tdata_run_load_end__ = __tdata_run_end__
                 0x00000001                . = ASSERT (((__tdata_run_start__ == __tdata_run_end__) || ((__tdata_run_end__ >= __RAM_segment_start__) && (__tdata_run_end__ <= __RAM_segment_end__))), error: .tdata_run is too large to fit in RAM memory segment)
-                0x20002a38                __bss_load_start__ = ALIGN (__tdata_run_end__, 0x4)
+                0x20002a3c                __bss_load_start__ = ALIGN (__tdata_run_end__, 0x4)
 
-.bss            0x20002a38      0x448
-                0x20002a38                __bss_start__ = .
+.bss            0x20002a3c      0x424
+                0x20002a3c                __bss_start__ = .
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss.m_lbs     0x20002a38       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+ .bss.m_lbs     0x20002a3c       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/main.o
  .bss.user_connected
-                0x20002a54        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
-                0x20002a54                user_connected
- *fill*         0x20002a55        0x3 
+                0x20002a58        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+                0x20002a58                user_connected
+ *fill*         0x20002a59        0x3 
  .bss.advertising_timer_data
-                0x20002a58       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+                0x20002a5c       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
  .bss.advertising_switch_counter
-                0x20002a78        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
-                0x20002a78                advertising_switch_counter
- *fill*         0x20002a79        0x3 
+                0x20002a7c        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+                0x20002a7c                advertising_switch_counter
+ *fill*         0x20002a7d        0x3 
  .bss.APP_TIMER_BUF.9199
-                0x20002a7c      0x180 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+                0x20002a80      0x180 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
  .bss.BLE_EVT_BUFFER.9278
-                0x20002bfc       0x48 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
- .bss.m_lbs     0x20002c44       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
- .bss.rfid_value
-                0x20002c60        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
-                0x20002c60                rfid_value
- .bss.rfid_counter
-                0x20002c61        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
-                0x20002c61                rfid_counter
- *fill*         0x20002c62        0x2 
- .bss.read_timer_data
-                0x20002c64       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
- .bss.m_cb      0x20002c84       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x20002c00       0x48 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+ .bss.m_lbs     0x20002c48       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .bss.m_cb      0x20002c64       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .bss.m_stable_state
-                0x20002cd4        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
- *fill*         0x20002cd5        0x3 
+                0x20002cb4        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+ *fill*         0x20002cb5        0x3 
  .bss.m_app_ticks_per_100ms
-                0x20002cd8        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+                0x20002cb8        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
  .bss.m_indication_type
-                0x20002cdc        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+                0x20002cbc        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
  .bss.m_alert_mask
-                0x20002ce0        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+                0x20002cc0        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
  .bss.m_leds_timer_id_data
-                0x20002ce4       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+                0x20002cc4       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
  .bss.m_alert_timer_id_data
-                0x20002d04       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+                0x20002ce4       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
  .bss.m_conn_params_config
-                0x20002d24       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x20002d04       0x1c Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .bss.m_preferred_conn_params
-                0x20002d40        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x20002d20        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .bss.m_update_count
-                0x20002d48        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
- *fill*         0x20002d49        0x1 
+                0x20002d28        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+ *fill*         0x20002d29        0x1 
  .bss.m_conn_handle
-                0x20002d4a        0x2 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x20002d2a        0x2 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .bss.m_current_conn_params
-                0x20002d4c        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x20002d2c        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .bss.m_conn_params_timer_id_data
-                0x20002d54       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x20002d34       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .bss.m_change_param
-                0x20002d74        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
- *fill*         0x20002d75        0x3 
- .bss.m_cb      0x20002d78       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
- .bss.m_cb      0x20002dd0       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x20002d54        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+ *fill*         0x20002d55        0x3 
+ .bss.m_cb      0x20002d58       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+ .bss.m_cb      0x20002db0       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .bss.mp_buttons
-                0x20002df0        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+                0x20002dd0        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
  .bss.m_button_count
-                0x20002df4        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
- *fill*         0x20002df5        0x3 
+                0x20002dd4        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+ *fill*         0x20002dd5        0x3 
  .bss.m_detection_delay_timer_id_data
-                0x20002df8       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+                0x20002dd8       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
  .bss.m_error_data.6539
-                0x20002e18       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
+                0x20002df8       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
  .bss.m_user_array_size
-                0x20002e38        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
- *fill*         0x20002e39        0x3 
- .bss.mp_users  0x20002e3c        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x20002e18        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+ *fill*         0x20002e19        0x3 
+ .bss.mp_users  0x20002e1c        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .bss.mp_timer_id_head
-                0x20002e40        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x20002e20        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .bss.m_ticks_latest
-                0x20002e44        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x20002e24        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .bss.m_ticks_elapsed
-                0x20002e48        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x20002e28        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .bss.m_ticks_elapsed_q_read_ind
-                0x20002e50        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x20002e30        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .bss.m_ticks_elapsed_q_write_ind
-                0x20002e51        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
- *fill*         0x20002e52        0x2 
+                0x20002e31        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+ *fill*         0x20002e32        0x2 
  .bss.m_evt_schedule_func
-                0x20002e54        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x20002e34        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .bss.m_rtc1_running
-                0x20002e58        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x20002e38        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .bss.m_rtc1_reset
-                0x20002e59        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
- *fill*         0x20002e5a        0x2 
+                0x20002e39        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+ *fill*         0x20002e3a        0x2 
  .bss.nrf_nvic_state
-                0x20002e5c        0xc Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
-                0x20002e5c                nrf_nvic_state
+                0x20002e3c        0xc Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x20002e3c                nrf_nvic_state
  .bss.m_evt_schedule_func
-                0x20002e68        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x20002e48        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .bss.m_softdevice_enabled
-                0x20002e6c        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
- *fill*         0x20002e6d        0x3 
+                0x20002e4c        0x1 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+ *fill*         0x20002e4d        0x3 
  .bss.mp_ble_evt_buffer
-                0x20002e70        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x20002e50        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .bss.m_ble_evt_buffer_size
-                0x20002e74        0x2 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
- *fill*         0x20002e76        0x2 
+                0x20002e54        0x2 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+ *fill*         0x20002e56        0x2 
  .bss.m_ble_evt_handler
-                0x20002e78        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x20002e58        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .bss.m_sys_evt_handler
-                0x20002e7c        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x20002e5c        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  *(COMMON)
-                0x20002e80                __bss_end__ = (__bss_start__ + SIZEOF (.bss))
-                0x00000448                __bss_size__ = SIZEOF (.bss)
-                0x20002e80                __bss_load_end__ = __bss_end__
+                0x20002e60                __bss_end__ = (__bss_start__ + SIZEOF (.bss))
+                0x00000424                __bss_size__ = SIZEOF (.bss)
+                0x20002e60                __bss_load_end__ = __bss_end__
                 0x00000001                . = ASSERT (((__bss_start__ == __bss_end__) || ((__bss_end__ >= __RAM_segment_start__) && (__bss_end__ <= __RAM_segment_end__))), error: .bss is too large to fit in RAM memory segment)
-                0x20002e80                __tbss_load_start__ = ALIGN (__bss_end__, 0x4)
+                0x20002e60                __tbss_load_start__ = ALIGN (__bss_end__, 0x4)
 
-.tbss           0x20002e80        0x0
-                0x20002e80                __tbss_start__ = .
+.tbss           0x20002e60        0x0
+                0x20002e60                __tbss_start__ = .
  *(.tbss .tbss.*)
-                0x20002e80                __tbss_end__ = (__tbss_start__ + SIZEOF (.tbss))
+                0x20002e60                __tbss_end__ = (__tbss_start__ + SIZEOF (.tbss))
                 0x00000000                __tbss_size__ = SIZEOF (.tbss)
-                0x20002e80                __tbss_load_end__ = __tbss_end__
+                0x20002e60                __tbss_load_end__ = __tbss_end__
                 0x00000001                . = ASSERT (((__tbss_start__ == __tbss_end__) || ((__tbss_end__ >= __RAM_segment_start__) && (__tbss_end__ <= __RAM_segment_end__))), error: .tbss is too large to fit in RAM memory segment)
-                0x20002e80                __non_init_load_start__ = ALIGN (__tbss_end__, 0x4)
+                0x20002e60                __non_init_load_start__ = ALIGN (__tbss_end__, 0x4)
 
-.non_init       0x20002e80        0x0
-                0x20002e80                __non_init_start__ = .
+.non_init       0x20002e60        0x0
+                0x20002e60                __non_init_start__ = .
  *(.non_init .non_init.*)
-                0x20002e80                __non_init_end__ = (__non_init_start__ + SIZEOF (.non_init))
+                0x20002e60                __non_init_end__ = (__non_init_start__ + SIZEOF (.non_init))
                 0x00000000                __non_init_size__ = SIZEOF (.non_init)
-                0x20002e80                __non_init_load_end__ = __non_init_end__
+                0x20002e60                __non_init_load_end__ = __non_init_end__
                 0x00000001                . = ASSERT (((__non_init_start__ == __non_init_end__) || ((__non_init_end__ >= __RAM_segment_start__) && (__non_init_end__ <= __RAM_segment_end__))), error: .non_init is too large to fit in RAM memory segment)
-                0x20002e80                __heap_load_start__ = ALIGN (__non_init_end__, 0x4)
+                0x20002e60                __heap_load_start__ = ALIGN (__non_init_end__, 0x4)
 
-.heap           0x20002e80      0x100
-                0x20002e80                __heap_start__ = .
+.heap           0x20002e60      0x100
+                0x20002e60                __heap_start__ = .
  *(.heap .heap.*)
-                0x20002f80                . = ALIGN (MAX ((__heap_start__ + __HEAPSIZE__), .), 0x4)
- *fill*         0x20002e80      0x100 
-                0x20002f80                __heap_end__ = (__heap_start__ + SIZEOF (.heap))
+                0x20002f60                . = ALIGN (MAX ((__heap_start__ + __HEAPSIZE__), .), 0x4)
+ *fill*         0x20002e60      0x100 
+                0x20002f60                __heap_end__ = (__heap_start__ + SIZEOF (.heap))
                 0x00000100                __heap_size__ = SIZEOF (.heap)
-                0x20002f80                __heap_load_end__ = __heap_end__
+                0x20002f60                __heap_load_end__ = __heap_end__
                 0x00000001                . = ASSERT (((__heap_start__ == __heap_end__) || ((__heap_end__ >= __RAM_segment_start__) && (__heap_end__ <= __RAM_segment_end__))), error: .heap is too large to fit in RAM memory segment)
                 0x2000f800                __stack_load_start__ = (__RAM_segment_end__ - 0x800)
 
@@ -7157,235 +7157,235 @@ LOAD C:/Program Files (x86)/SEGGER/SEGGER Embedded Studio 2.16a/lib/libvfscanf_v
 END GROUP
 OUTPUT(Output/Debug/Exe/nrf52832_xxaa_s132.elf elf32-littlearm)
 
-.debug_frame    0x00000000     0x83e0
+.debug_frame    0x00000000     0x83a8
  .debug_frame   0x00000000      0xc18 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
  .debug_frame   0x00000c18      0x478 Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
- .debug_frame   0x00001090      0x558 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
- .debug_frame   0x000015e8      0x1f0 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
- .debug_frame   0x000017d8       0x90 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
- .debug_frame   0x00001868      0xcb8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .debug_frame   0x00002520      0x64c Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
- .debug_frame   0x00002b6c      0x320 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
- .debug_frame   0x00002e8c      0x8b0 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
- .debug_frame   0x0000373c      0x718 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
- .debug_frame   0x00003e54       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
- .debug_frame   0x00003ea4      0x3a8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
- .debug_frame   0x0000424c     0x1184 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
- .debug_frame   0x000053d0     0x14b4 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
- .debug_frame   0x00006884      0x160 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
- .debug_frame   0x000069e4       0xc0 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
- .debug_frame   0x00006aa4       0x48 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
- .debug_frame   0x00006aec      0xbc0 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
- .debug_frame   0x000076ac      0xb10 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
- .debug_frame   0x000081bc      0x174 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
- .debug_frame   0x00008330       0xb0 C:/Program Files (x86)/SEGGER/SEGGER Embedded Studio 2.16a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
+ .debug_frame   0x00001090      0x520 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .debug_frame   0x000015b0      0x1f0 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+ .debug_frame   0x000017a0       0x90 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
+ .debug_frame   0x00001830      0xcb8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .debug_frame   0x000024e8      0x64c Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+ .debug_frame   0x00002b34      0x320 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+ .debug_frame   0x00002e54      0x8b0 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+ .debug_frame   0x00003704      0x718 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+ .debug_frame   0x00003e1c       0x50 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
+ .debug_frame   0x00003e6c      0x3a8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
+ .debug_frame   0x00004214     0x1184 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+ .debug_frame   0x00005398     0x14b4 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+ .debug_frame   0x0000684c      0x160 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+ .debug_frame   0x000069ac       0xc0 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
+ .debug_frame   0x00006a6c       0x48 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
+ .debug_frame   0x00006ab4      0xbc0 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+ .debug_frame   0x00007674      0xb10 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+ .debug_frame   0x00008184      0x174 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
+ .debug_frame   0x000082f8       0xb0 C:/Program Files (x86)/SEGGER/SEGGER Embedded Studio 2.16a/lib/libc_v7em_fpv4_sp_d16_hard_t_le_eabi.a(libc2_asm.o)
 
-.debug_info     0x00000000    0x259fc
+.debug_info     0x00000000    0x25a2a
  .debug_info    0x00000000     0x523f Output/nrf52832_xxaa_s132 Debug/Obj/main.o
  .debug_info    0x0000523f     0x2595 Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
- .debug_info    0x000077d4     0x2f30 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
- .debug_info    0x0000a704      0xda5 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
- .debug_info    0x0000b4a9      0x111 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
- .debug_info    0x0000b5ba     0x2272 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .debug_info    0x0000d82c     0x34c4 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
- .debug_info    0x00010cf0      0x9f1 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
- .debug_info    0x000116e1     0x2cc3 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
- .debug_info    0x000143a4     0x3604 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
- .debug_info    0x000179a8      0x113 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
- .debug_info    0x00017abb     0x10ad Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
- .debug_info    0x00018b68     0x21b4 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
- .debug_info    0x0001ad1c     0x2ca1 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
- .debug_info    0x0001d9bd      0x61e Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
- .debug_info    0x0001dfdb      0x2d6 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
- .debug_info    0x0001e2b1      0x197 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
- .debug_info    0x0001e448     0x207a Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
- .debug_info    0x000204c2     0x4592 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
- .debug_info    0x00024a54      0xd18 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
- .debug_info    0x0002576c       0xc6 Output/nrf52832_xxaa_s132 Debug/Obj/thumb_crt0.o
- .debug_info    0x00025832       0xe4 Output/nrf52832_xxaa_s132 Debug/Obj/nRF_Startup.o
- .debug_info    0x00025916       0xe6 Output/nrf52832_xxaa_s132 Debug/Obj/nrf52_Vectors.o
+ .debug_info    0x000077d4     0x2f5e Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .debug_info    0x0000a732      0xda5 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+ .debug_info    0x0000b4d7      0x111 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
+ .debug_info    0x0000b5e8     0x2272 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .debug_info    0x0000d85a     0x34c4 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+ .debug_info    0x00010d1e      0x9f1 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+ .debug_info    0x0001170f     0x2cc3 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+ .debug_info    0x000143d2     0x3604 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+ .debug_info    0x000179d6      0x113 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
+ .debug_info    0x00017ae9     0x10ad Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
+ .debug_info    0x00018b96     0x21b4 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+ .debug_info    0x0001ad4a     0x2ca1 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+ .debug_info    0x0001d9eb      0x61e Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+ .debug_info    0x0001e009      0x2d6 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
+ .debug_info    0x0001e2df      0x197 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
+ .debug_info    0x0001e476     0x207a Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+ .debug_info    0x000204f0     0x4592 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+ .debug_info    0x00024a82      0xd18 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
+ .debug_info    0x0002579a       0xc6 Output/nrf52832_xxaa_s132 Debug/Obj/thumb_crt0.o
+ .debug_info    0x00025860       0xe4 Output/nrf52832_xxaa_s132 Debug/Obj/nRF_Startup.o
+ .debug_info    0x00025944       0xe6 Output/nrf52832_xxaa_s132 Debug/Obj/nrf52_Vectors.o
 
-.debug_abbrev   0x00000000     0x3147
+.debug_abbrev   0x00000000     0x3140
  .debug_abbrev  0x00000000      0x3c7 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
  .debug_abbrev  0x000003c7      0x223 Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
- .debug_abbrev  0x000005ea      0x2cf Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
- .debug_abbrev  0x000008b9      0x23f Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
- .debug_abbrev  0x00000af8       0x92 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
- .debug_abbrev  0x00000b8a      0x3bd Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .debug_abbrev  0x00000f47      0x2d5 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
- .debug_abbrev  0x0000121c      0x26e Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
- .debug_abbrev  0x0000148a      0x286 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
- .debug_abbrev  0x00001710      0x35a Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
- .debug_abbrev  0x00001a6a       0xd3 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
- .debug_abbrev  0x00001b3d      0x1e8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
- .debug_abbrev  0x00001d25      0x367 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
- .debug_abbrev  0x0000208c      0x38c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
- .debug_abbrev  0x00002418      0x191 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
- .debug_abbrev  0x000025a9      0x120 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
- .debug_abbrev  0x000026c9       0xb4 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
- .debug_abbrev  0x0000277d      0x416 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
- .debug_abbrev  0x00002b93      0x3bd Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
- .debug_abbrev  0x00002f50      0x1bd Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
- .debug_abbrev  0x0000310d       0x12 Output/nrf52832_xxaa_s132 Debug/Obj/thumb_crt0.o
- .debug_abbrev  0x0000311f       0x14 Output/nrf52832_xxaa_s132 Debug/Obj/nRF_Startup.o
- .debug_abbrev  0x00003133       0x14 Output/nrf52832_xxaa_s132 Debug/Obj/nrf52_Vectors.o
+ .debug_abbrev  0x000005ea      0x2c8 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .debug_abbrev  0x000008b2      0x23f Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+ .debug_abbrev  0x00000af1       0x92 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
+ .debug_abbrev  0x00000b83      0x3bd Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .debug_abbrev  0x00000f40      0x2d5 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+ .debug_abbrev  0x00001215      0x26e Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+ .debug_abbrev  0x00001483      0x286 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+ .debug_abbrev  0x00001709      0x35a Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+ .debug_abbrev  0x00001a63       0xd3 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
+ .debug_abbrev  0x00001b36      0x1e8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
+ .debug_abbrev  0x00001d1e      0x367 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+ .debug_abbrev  0x00002085      0x38c Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+ .debug_abbrev  0x00002411      0x191 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+ .debug_abbrev  0x000025a2      0x120 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
+ .debug_abbrev  0x000026c2       0xb4 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
+ .debug_abbrev  0x00002776      0x416 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+ .debug_abbrev  0x00002b8c      0x3bd Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+ .debug_abbrev  0x00002f49      0x1bd Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
+ .debug_abbrev  0x00003106       0x12 Output/nrf52832_xxaa_s132 Debug/Obj/thumb_crt0.o
+ .debug_abbrev  0x00003118       0x14 Output/nrf52832_xxaa_s132 Debug/Obj/nRF_Startup.o
+ .debug_abbrev  0x0000312c       0x14 Output/nrf52832_xxaa_s132 Debug/Obj/nrf52_Vectors.o
 
 .debug_pubnames
-                0x00000000    0x10f90
+                0x00000000    0x10f8f
  .debug_pubnames
                 0x00000000     0x2173 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
  .debug_pubnames
                 0x00002173      0xf8f Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
  .debug_pubnames
-                0x00003102     0x1056 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+                0x00003102     0x1055 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
  .debug_pubnames
-                0x00004158      0x12f Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+                0x00004157      0x12f Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
  .debug_pubnames
-                0x00004287       0x3a Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
+                0x00004286       0x3a Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
  .debug_pubnames
-                0x000042c1     0x11c9 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x000042c0     0x11c9 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .debug_pubnames
-                0x0000548a     0x127c Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x00005489     0x127c Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
  .debug_pubnames
-                0x00006706      0x7f3 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+                0x00006705      0x7f3 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
  .debug_pubnames
-                0x00006ef9     0x11af Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x00006ef8     0x11af Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .debug_pubnames
-                0x000080a8     0x144b Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x000080a7     0x144b Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .debug_pubnames
-                0x000094f3       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
+                0x000094f2       0x34 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
  .debug_pubnames
-                0x00009527      0x98f Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
+                0x00009526      0x98f Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
  .debug_pubnames
-                0x00009eb6     0x1af5 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x00009eb5     0x1af5 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .debug_pubnames
-                0x0000b9ab     0x1e1f Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x0000b9aa     0x1e1f Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .debug_pubnames
-                0x0000d7ca      0x22b Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+                0x0000d7c9      0x22b Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
  .debug_pubnames
-                0x0000d9f5       0x82 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
+                0x0000d9f4       0x82 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
  .debug_pubnames
-                0x0000da77      0x306 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
+                0x0000da76      0x306 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
  .debug_pubnames
-                0x0000dd7d     0x125a Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x0000dd7c     0x125a Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .debug_pubnames
-                0x0000efd7     0x1efb Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x0000efd6     0x1efb Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .debug_pubnames
-                0x00010ed2       0xbe Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
+                0x00010ed1       0xbe Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
 
 .debug_pubtypes
-                0x00000000     0x7255
+                0x00000000     0x7248
  .debug_pubtypes
                 0x00000000     0x11d8 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
  .debug_pubtypes
                 0x000011d8      0x7fd Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
  .debug_pubtypes
-                0x000019d5      0x85e Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+                0x000019d5      0x851 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
  .debug_pubtypes
-                0x00002233      0x1b7 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+                0x00002226      0x1b7 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
  .debug_pubtypes
-                0x000023ea       0xb8 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
+                0x000023dd       0xb8 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
  .debug_pubtypes
-                0x000024a2      0x3b9 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x00002495      0x3b9 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .debug_pubtypes
-                0x0000285b      0xd81 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x0000284e      0xd81 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
  .debug_pubtypes
-                0x000035dc      0x1ed Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+                0x000035cf      0x1ed Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
  .debug_pubtypes
-                0x000037c9      0x7fd Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x000037bc      0x7fd Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .debug_pubtypes
-                0x00003fc6      0xdf7 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x00003fb9      0xdf7 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .debug_pubtypes
-                0x00004dbd       0xdb Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
+                0x00004db0       0xdb Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
  .debug_pubtypes
-                0x00004e98      0x262 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
+                0x00004e8b      0x262 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
  .debug_pubtypes
-                0x000050fa      0x412 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x000050ed      0x412 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .debug_pubtypes
-                0x0000550c      0x51e Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x000054ff      0x51e Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .debug_pubtypes
-                0x00005a2a      0x1db Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+                0x00005a1d      0x1db Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
  .debug_pubtypes
-                0x00005c05      0x130 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
+                0x00005bf8      0x130 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
  .debug_pubtypes
-                0x00005d35       0xdb Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
+                0x00005d28       0xdb Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
  .debug_pubtypes
-                0x00005e10      0x392 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00005e03      0x392 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .debug_pubtypes
-                0x000061a2      0xf25 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x00006195      0xf25 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .debug_pubtypes
-                0x000070c7      0x18e Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
+                0x000070ba      0x18e Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
 
-.debug_aranges  0x00000000     0x2628
+.debug_aranges  0x00000000     0x2620
  .debug_aranges
                 0x00000000      0x458 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
  .debug_aranges
                 0x00000458      0x238 Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
  .debug_aranges
-                0x00000690      0x258 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+                0x00000690      0x250 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
  .debug_aranges
-                0x000008e8       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+                0x000008e0       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
  .debug_aranges
-                0x00000940       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
+                0x00000938       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
  .debug_aranges
-                0x00000968      0x2c0 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                0x00000960      0x2c0 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
  .debug_aranges
-                0x00000c28      0x278 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x00000c20      0x278 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
  .debug_aranges
-                0x00000ea0       0x88 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+                0x00000e98       0x88 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
  .debug_aranges
-                0x00000f28      0x2c8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+                0x00000f20      0x2c8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
  .debug_aranges
-                0x000011f0      0x298 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x000011e8      0x298 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .debug_aranges
-                0x00001488       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
+                0x00001480       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
  .debug_aranges
-                0x000014a8      0x188 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
+                0x000014a0      0x188 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
  .debug_aranges
-                0x00001630      0x360 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                0x00001628      0x360 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
  .debug_aranges
-                0x00001990      0x3e8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                0x00001988      0x3e8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
  .debug_aranges
-                0x00001d78       0x48 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+                0x00001d70       0x48 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
  .debug_aranges
-                0x00001dc0       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
+                0x00001db8       0x30 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
  .debug_aranges
-                0x00001df0       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
+                0x00001de8       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
  .debug_aranges
-                0x00001e10      0x2b0 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+                0x00001e08      0x2b0 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
  .debug_aranges
-                0x000020c0      0x428 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x000020b8      0x428 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .debug_aranges
-                0x000024e8       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
+                0x000024e0       0x58 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
  .debug_aranges
-                0x00002540       0xa8 Output/nrf52832_xxaa_s132 Debug/Obj/thumb_crt0.o
+                0x00002538       0xa8 Output/nrf52832_xxaa_s132 Debug/Obj/thumb_crt0.o
  .debug_aranges
-                0x000025e8       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nRF_Startup.o
+                0x000025e0       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nRF_Startup.o
  .debug_aranges
-                0x00002608       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf52_Vectors.o
+                0x00002600       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf52_Vectors.o
 
-.debug_ranges   0x00000000     0x24b8
+.debug_ranges   0x00000000     0x24b0
  .debug_ranges  0x00000000      0x448 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
  .debug_ranges  0x00000448      0x228 Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
- .debug_ranges  0x00000670      0x248 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
- .debug_ranges  0x000008b8       0x48 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
- .debug_ranges  0x00000900       0x18 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
- .debug_ranges  0x00000918      0x2b0 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .debug_ranges  0x00000bc8      0x268 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
- .debug_ranges  0x00000e30       0x78 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
- .debug_ranges  0x00000ea8      0x2b8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
- .debug_ranges  0x00001160      0x2a0 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
- .debug_ranges  0x00001400       0x10 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
- .debug_ranges  0x00001410      0x178 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
- .debug_ranges  0x00001588      0x350 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
- .debug_ranges  0x000018d8      0x3d8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
- .debug_ranges  0x00001cb0       0x38 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
- .debug_ranges  0x00001ce8       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
- .debug_ranges  0x00001d08       0x10 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
- .debug_ranges  0x00001d18      0x2a0 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
- .debug_ranges  0x00001fb8      0x418 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
- .debug_ranges  0x000023d0       0x48 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
- .debug_ranges  0x00002418       0xa0 Output/nrf52832_xxaa_s132 Debug/Obj/thumb_crt0.o
+ .debug_ranges  0x00000670      0x240 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .debug_ranges  0x000008b0       0x48 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+ .debug_ranges  0x000008f8       0x18 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
+ .debug_ranges  0x00000910      0x2b0 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .debug_ranges  0x00000bc0      0x268 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+ .debug_ranges  0x00000e28       0x78 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+ .debug_ranges  0x00000ea0      0x2b8 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+ .debug_ranges  0x00001158      0x2a0 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+ .debug_ranges  0x000013f8       0x10 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
+ .debug_ranges  0x00001408      0x178 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
+ .debug_ranges  0x00001580      0x350 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+ .debug_ranges  0x000018d0      0x3d8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+ .debug_ranges  0x00001ca8       0x38 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+ .debug_ranges  0x00001ce0       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
+ .debug_ranges  0x00001d00       0x10 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
+ .debug_ranges  0x00001d10      0x2a0 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+ .debug_ranges  0x00001fb0      0x418 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+ .debug_ranges  0x000023c8       0x48 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
+ .debug_ranges  0x00002410       0xa0 Output/nrf52832_xxaa_s132 Debug/Obj/thumb_crt0.o
 
 .debug_macro    0x00000000    0x1787c
  .debug_macro   0x00000000      0x3e3 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
@@ -7490,71 +7490,71 @@ OUTPUT(Output/Debug/Exe/nrf52832_xxaa_s132.elf elf32-littlearm)
  .debug_macro   0x000177cb       0x10 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
  .debug_macro   0x000177db       0xa1 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
 
-.debug_line     0x00000000     0xc542
+.debug_line     0x00000000     0xc540
  .debug_line    0x00000000     0x141c Output/nrf52832_xxaa_s132 Debug/Obj/main.o
  .debug_line    0x0000141c      0x973 Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
- .debug_line    0x00001d8f      0xb9c Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
- .debug_line    0x0000292b      0x683 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
- .debug_line    0x00002fae      0x15f Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
- .debug_line    0x0000310d      0xd76 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .debug_line    0x00003e83      0xa3a Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
- .debug_line    0x000048bd      0x6c2 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
- .debug_line    0x00004f7f      0xc9e Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
- .debug_line    0x00005c1d      0xad7 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
- .debug_line    0x000066f4      0x2ff Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
- .debug_line    0x000069f3      0x82a Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
- .debug_line    0x0000721d      0xee3 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
- .debug_line    0x00008100     0x10cf Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
- .debug_line    0x000091cf      0x60c Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
- .debug_line    0x000097db      0x479 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
- .debug_line    0x00009c54      0x430 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
- .debug_line    0x0000a084      0xcc9 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
- .debug_line    0x0000ad4d     0x100d Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
- .debug_line    0x0000bd5a      0x440 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
- .debug_line    0x0000c19a      0x233 Output/nrf52832_xxaa_s132 Debug/Obj/thumb_crt0.o
- .debug_line    0x0000c3cd       0xaf Output/nrf52832_xxaa_s132 Debug/Obj/nRF_Startup.o
- .debug_line    0x0000c47c       0xc6 Output/nrf52832_xxaa_s132 Debug/Obj/nrf52_Vectors.o
+ .debug_line    0x00001d8f      0xb9a Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .debug_line    0x00002929      0x683 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+ .debug_line    0x00002fac      0x15f Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
+ .debug_line    0x0000310b      0xd76 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .debug_line    0x00003e81      0xa3a Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+ .debug_line    0x000048bb      0x6c2 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+ .debug_line    0x00004f7d      0xc9e Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+ .debug_line    0x00005c1b      0xad7 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+ .debug_line    0x000066f2      0x2ff Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
+ .debug_line    0x000069f1      0x82a Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
+ .debug_line    0x0000721b      0xee3 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+ .debug_line    0x000080fe     0x10cf Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+ .debug_line    0x000091cd      0x60c Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+ .debug_line    0x000097d9      0x479 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
+ .debug_line    0x00009c52      0x430 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
+ .debug_line    0x0000a082      0xcc9 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+ .debug_line    0x0000ad4b     0x100d Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+ .debug_line    0x0000bd58      0x440 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
+ .debug_line    0x0000c198      0x233 Output/nrf52832_xxaa_s132 Debug/Obj/thumb_crt0.o
+ .debug_line    0x0000c3cb       0xaf Output/nrf52832_xxaa_s132 Debug/Obj/nRF_Startup.o
+ .debug_line    0x0000c47a       0xc6 Output/nrf52832_xxaa_s132 Debug/Obj/nrf52_Vectors.o
 
-.debug_str      0x00000000    0x82905
- .debug_str     0x00000000    0x7bd5d Output/nrf52832_xxaa_s132 Debug/Obj/main.o
-                              0x7c9bb (size before relaxing)
- .debug_str     0x0007bd5d       0xad Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
+.debug_str      0x00000000    0x82938
+ .debug_str     0x00000000    0x7bd62 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+                              0x7c9c0 (size before relaxing)
+ .debug_str     0x0007bd62       0xad Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
                               0x73b41 (size before relaxing)
- .debug_str     0x0007be0a      0x21f Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
-                              0x74aeb (size before relaxing)
- .debug_str     0x0007c029      0x23b Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
-                              0x6dbcf (size before relaxing)
- .debug_str     0x0007c264       0xb1 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
+ .debug_str     0x0007be0f      0x24d Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+                              0x74ad9 (size before relaxing)
+ .debug_str     0x0007c05c      0x23b Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+                              0x6dbd5 (size before relaxing)
+ .debug_str     0x0007c297       0xb1 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
                                0x2ccb (size before relaxing)
- .debug_str     0x0007c315     0x124b Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
-                              0x6fccd (size before relaxing)
- .debug_str     0x0007d560      0x43f Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+ .debug_str     0x0007c348     0x124b Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+                              0x6fcd3 (size before relaxing)
+ .debug_str     0x0007d593      0x43f Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
                               0x73818 (size before relaxing)
- .debug_str     0x0007d99f      0xed7 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+ .debug_str     0x0007d9d2      0xed7 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
                               0x6e5ec (size before relaxing)
- .debug_str     0x0007e876      0x353 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+ .debug_str     0x0007e8a9      0x353 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
                               0x736b6 (size before relaxing)
- .debug_str     0x0007ebc9      0x232 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+ .debug_str     0x0007ebfc      0x232 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
                               0x74713 (size before relaxing)
- .debug_str     0x0007edfb       0xa8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
+ .debug_str     0x0007ee2e       0xa8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
                               0x6ae4b (size before relaxing)
- .debug_str     0x0007eea3      0x137 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
-                              0x6e828 (size before relaxing)
- .debug_str     0x0007efda      0xcf0 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
-                              0x6fe1c (size before relaxing)
- .debug_str     0x0007fcca     0x1494 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
-                              0x701c4 (size before relaxing)
- .debug_str     0x0008115e      0x1c1 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
-                              0x6de9a (size before relaxing)
- .debug_str     0x0008131f      0x158 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
+ .debug_str     0x0007eed6      0x137 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
+                              0x6e82e (size before relaxing)
+ .debug_str     0x0007f00d      0xcf0 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+                              0x6fe22 (size before relaxing)
+ .debug_str     0x0007fcfd     0x1494 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+                              0x701ca (size before relaxing)
+ .debug_str     0x00081191      0x1c1 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+                              0x6dea0 (size before relaxing)
+ .debug_str     0x00081352      0x158 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
                               0x6d86b (size before relaxing)
- .debug_str     0x00081477       0xa8 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
+ .debug_str     0x000814aa       0xa8 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
                               0x6d9f5 (size before relaxing)
- .debug_str     0x0008151f      0x9f6 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+ .debug_str     0x00081552      0x9f6 Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
                               0x6f2af (size before relaxing)
- .debug_str     0x00081f15      0x4d9 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
-                              0x785dc (size before relaxing)
- .debug_str     0x000823ee      0x517 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
+ .debug_str     0x00081f48      0x4d9 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                              0x785e2 (size before relaxing)
+ .debug_str     0x00082421      0x517 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
                               0x6af39 (size before relaxing)
 
 .comment        0x00000000       0x4e
