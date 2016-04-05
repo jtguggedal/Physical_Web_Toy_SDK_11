@@ -12,6 +12,7 @@
 
 #include "app_button.h"
 #include "app_error.h"
+#include "app_pwm.h"
 #include "app_timer.h"
 #include "ble_advdata.h"
 #include "ble_conn_params.h"
@@ -52,8 +53,14 @@
 #define IR_RECEIVER_PIN_1               13                                          /**< Button that will trigger the notification event with the LED Button Service */
 #define IR_RECEIVER_PIN_2               14
 #define IR_RECEIVER_PIN_3               15
+#define RFID_INTERRUPT_PIN              16
 
-#define DEVICE_NAME                     "COOL GUY"                                        /**< Name of device. Will be included in the advertising data. */
+#define PWM_PERIOD                      5000L
+#define PWM_RED_PIN                     23
+#define PWM_GREEN_PIN                   22
+#define PWM_BLUE_PIN                    2
+
+#define DEVICE_NAME                     "HMH"                                        /**< Name of device. Will be included in the advertising data. */
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
 #define APP_ADV_TIMEOUT_IN_SECONDS      BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED       /**< The advertising time-out (in units of seconds). When set to 0, we will never time out. */
@@ -79,15 +86,70 @@
 static uint16_t                         m_conn_handle = BLE_CONN_HANDLE_INVALID;    /**< Handle of the current connection. */
 static ble_lbs_t                        m_lbs;                                      /**< LED Button Service instance. */
 bool user_connected = false;
+static volatile bool ready_flag;            // A flag indicating PWM status.
 
 uint8_t pin_state[] = {0, 0, 0};
 
 APP_TIMER_DEF(advertising_timer);
+APP_PWM_INSTANCE(PWM1, 1);
+APP_PWM_INSTANCE(PWM2, 2);
+
 
 uint8_t rfid_counter = 0;
 uint8_t hit_counter = 0;
+uint8_t old_color_data = 0;
+
+/**@brief Function for setting the color of the RGB-LEDS
+*
+*/
+uint8_t  red_value = 0, green_value = 0, blue_value = 0, color_data = 0;
+bool green_state = false;
+
+void set_rgb_color(uint8_t new_color_data){
+  
+  if (new_color_data == 250 && green_state == true)
+      color_data = 0;
+  else if (new_color_data == 250 && green_state == false)
+      color_data = 1;
+  else
+      color_data = new_color_data;
+  
+  switch (color_data) {
+    case 0:
+          red_value = 0;
+          green_value = 100;
+          blue_value = 0;
+          green_state = true;
+          break;
+    case 1:
+          red_value = 100;
+          green_value = 0;
+          blue_value = 0;
+          green_state = false;
+          break;
+    case 2:
+          red_value = 100;
+          green_value = 100;
+          blue_value = 100;
+          break;
+    case 100:
+          red_value = 100;
+          green_value = 100;
+          blue_value = 0;
+          break;
+     default:
+          break;
+    }
+    
+    old_color_data = color_data;
+    while (app_pwm_channel_duty_set(&PWM1, 0, red_value) == NRF_ERROR_BUSY);
+    while (app_pwm_channel_duty_set(&PWM1, 1, green_value) == NRF_ERROR_BUSY);
+    while (app_pwm_channel_duty_set(&PWM2, 0, blue_value) == NRF_ERROR_BUSY);
+    
+}
 
 /**@brief Function for updating the hit value when a hit is registered.
+*
 */
 
 uint8_t new_hit_value (void){
@@ -130,6 +192,41 @@ static void timers_init(void)
     // Initialize timer module, making it use the scheduler
     APP_TIMER_INIT(APP_TIMER_PRESCALER, APP_TIMER_OP_QUEUE_SIZE, false);
 }
+
+void pwm_ready_callback(uint32_t pwm_id)    // PWM callback function
+{
+    ready_flag = true;
+}
+
+/**@brief Function for the PWM initialization.
+ *
+ * @details Initializes the PWM module.
+ */
+static void pwm_init(void)
+{
+    ret_code_t err_code;
+    
+    /* 2-channel PWM, 200Hz, output on pins. */
+    app_pwm_config_t pwm1_cfg = APP_PWM_DEFAULT_CONFIG_2CH(20000L, PWM_RED_PIN, PWM_GREEN_PIN);
+    
+    /* 1-channel PWM, 200Hz, output on pins. */
+    app_pwm_config_t pwm2_cfg = APP_PWM_DEFAULT_CONFIG_1CH(5000L, PWM_BLUE_PIN);
+
+    pwm2_cfg.pin_polarity[0] = APP_PWM_POLARITY_ACTIVE_HIGH;
+
+    /* Initialize and enable PWM. */
+    err_code = app_pwm_init(&PWM1, &pwm1_cfg, pwm_ready_callback);
+    APP_ERROR_CHECK(err_code);
+    
+    err_code = app_pwm_init(&PWM2,&pwm2_cfg,NULL);
+    APP_ERROR_CHECK(err_code);
+    
+    app_pwm_enable(&PWM1);
+    app_pwm_enable(&PWM2);
+
+    set_rgb_color(100);
+}
+
 
 
 /**@brief Function for the GAP initialization.
@@ -201,16 +298,27 @@ void advertising_init(void)
 
 static void pin_write_handler(ble_lbs_t * p_lbs, uint8_t * pin_state)
 {  
+    
     twi_set_motor(pin_state);
+
+    uint8_t web_color_data = read_byte(pin_state, 5);
+    if (web_color_data != 0)
+      set_rgb_color(web_color_data);
 
     // Checks every pin_state[i] bitwise to a given binary number with a for loop.
        
     for(uint8_t i = 0; i < PIN_OUTPUT_OFFSET; i++){
-      if (read_bit(pin_state, 1, i))
+      if (read_bit(pin_state, 1, i)){
+          set_rgb_color(2);
+          nrf_delay_ms(50);
           nrf_gpio_pin_set((PIN_OUTPUT_START+i));
+          nrf_delay_ms(50);
+          set_rgb_color(250);
+          }
       else
           nrf_gpio_pin_clear((PIN_OUTPUT_START+i));
      } 
+
 }
 
 /**@brief Function for initializing services that will be used by the application.
@@ -311,8 +419,7 @@ uint8_t advertising_switch_counter = 0;
 
 void radio_notification_evt_handler(void* p_context)
 {
-    //if (!radio_evt)
-    //{
+   if (user_connected == false){    
         if(advertising_switch_counter % 2 == 0)
         {
             // Switching to Eddystone
@@ -329,7 +436,9 @@ void radio_notification_evt_handler(void* p_context)
             nrf_gpio_pin_clear(LED_ADVERTISING_PIN);
         else
             nrf_gpio_pin_set(LED_ADVERTISING_PIN);
-    //} 
+   }
+   else
+        nrf_gpio_pin_set(LED_ADVERTISING_PIN);
 }
 
 
@@ -441,22 +550,21 @@ static void ble_stack_init(void)
 **/
 
 static void pin_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action){
-    if(pin == 13 || pin == 14 || pin == 15){
+    if(pin == IR_RECEIVER_PIN_1 || pin == IR_RECEIVER_PIN_2 || pin == IR_RECEIVER_PIN_3){
       hit_counter = new_hit_value();
 
-      if(pin == 13)            
+      if(pin == IR_RECEIVER_PIN_1)            
             ble_lbs_on_button_change(&m_lbs, hit_counter, 0);
-      else if(pin == 14)
+      else if(pin == IR_RECEIVER_PIN_2)
             ble_lbs_on_button_change(&m_lbs, hit_counter, 1);
-      else if(pin == 15)
+      else if(pin == IR_RECEIVER_PIN_3)
             ble_lbs_on_button_change(&m_lbs, hit_counter, 2);
     }
 
-    else if(pin == 16) {
+    else if(pin == RFID_INTERRUPT_PIN) {
             rfid_counter = rfid_read_event_handler();
             ble_lbs_on_button_change(&m_lbs, rfid_counter, 4);
     }
-    //hit_counter = hit_counter;
 }
 
 /**@brief Function for initializing the gpiote driver.
@@ -473,15 +581,15 @@ void nrf_gpiote_init(void){
     nrf_drv_gpiote_in_config_t config = GPIOTE_CONFIG_IN_SENSE_TOGGLE(false);
     config.pull = NRF_GPIO_PIN_PULLDOWN;
 
-    nrf_drv_gpiote_in_init(13, &config, pin_event_handler);
-    nrf_drv_gpiote_in_init(14, &config, pin_event_handler);
-    nrf_drv_gpiote_in_init(15, &config, pin_event_handler);
-    nrf_drv_gpiote_in_init(16, &config, pin_event_handler);
+    nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_1, &config, pin_event_handler);
+    nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_2, &config, pin_event_handler);
+    nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_3, &config, pin_event_handler);
+    nrf_drv_gpiote_in_init(RFID_INTERRUPT_PIN, &config, pin_event_handler);
 
-    nrf_drv_gpiote_in_event_enable(13, true);
-    nrf_drv_gpiote_in_event_enable(14, true);
-    nrf_drv_gpiote_in_event_enable(15, true);
-    nrf_drv_gpiote_in_event_enable(16, true);
+    nrf_drv_gpiote_in_event_enable(IR_RECEIVER_PIN_1, true);
+    nrf_drv_gpiote_in_event_enable(IR_RECEIVER_PIN_2, true);
+    nrf_drv_gpiote_in_event_enable(IR_RECEIVER_PIN_3, true);
+    nrf_drv_gpiote_in_event_enable(RFID_INTERRUPT_PIN, true);
 }
 
 void advertising_timer_init(void){
@@ -520,10 +628,12 @@ int main(void)
     twi_motordriver_init();
     twi_rfid_init();
     nrf_gpiote_init();
+    pwm_init();
     
     advertising_start();
 
-        
+    set_rgb_color(0);    
+
      // Enter main loop.
     for (;;)
     {
