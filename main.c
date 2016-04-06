@@ -56,11 +56,11 @@
 #define RFID_INTERRUPT_PIN              16
 
 #define PWM_PERIOD                      5000L
-#define PWM_RED_PIN                     23
-#define PWM_GREEN_PIN                   22
+#define PWM_RED_PIN                     22
+#define PWM_GREEN_PIN                   23
 #define PWM_BLUE_PIN                    2
 
-#define DEVICE_NAME                     "HMH"                                        /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "nrf_PhysWebToy"                                        /**< Name of device. Will be included in the advertising data. */
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
 #define APP_ADV_TIMEOUT_IN_SECONDS      BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED       /**< The advertising time-out (in units of seconds). When set to 0, we will never time out. */
@@ -85,23 +85,29 @@
 
 static uint16_t                         m_conn_handle = BLE_CONN_HANDLE_INVALID;    /**< Handle of the current connection. */
 static ble_lbs_t                        m_lbs;                                      /**< LED Button Service instance. */
-bool user_connected = false;
-static volatile bool ready_flag;            // A flag indicating PWM status.
+bool user_connected = false;                                                        /**< A flag indicating if there is an user connected. */
 
-uint8_t pin_state[] = {0, 0, 0};
+uint8_t rfid_counter = 0;                                                           /* Counter for every time the RFID-shield senses a nearby tag. */
+uint8_t hit_counter = 0;                                                            /* Counter for every time the unit has been hit. */
 
-APP_TIMER_DEF(advertising_timer);
-APP_PWM_INSTANCE(PWM1, 1);
-APP_PWM_INSTANCE(PWM2, 2);
+APP_TIMER_DEF(advertising_timer);                                                   /* Defines the advertising app_timer. */
+APP_PWM_INSTANCE(PWM1, 1);                                                          /* Defines the PWM instance used for the red and green LED-pins. */
+APP_PWM_INSTANCE(PWM2, 2);                                                          /* Defines the PWM instance used for the blue LED-pins. */
 
-
-uint8_t rfid_counter = 0;
-uint8_t hit_counter = 0;
-uint8_t old_color_data = 0;
 
 /**@brief Function for setting the color of the RGB-LEDS
 *
+*@details A decimal value of new_color_data uses predefined values to set the color.
+*         Value 0 = Green color.
+*         Value 1 = Red color. 
+*         Value 2 = Blue color.
+*         Value 100 = No color. (The LED is turned off).
+*
+* The function also has a way of remembering the previous state; green_state = true means you are vulnerable,
+*  green_state = false means you are invulnerable after a recent hit.
+*  An input value of 250 makes the LED either turn green or red, depending on the actual game state.
 */
+
 uint8_t  red_value = 0, green_value = 0, blue_value = 0, color_data = 0;
 bool green_state = false;
 
@@ -141,7 +147,6 @@ void set_rgb_color(uint8_t new_color_data){
           break;
     }
     
-    old_color_data = color_data;
     while (app_pwm_channel_duty_set(&PWM1, 0, red_value) == NRF_ERROR_BUSY);
     while (app_pwm_channel_duty_set(&PWM1, 1, green_value) == NRF_ERROR_BUSY);
     while (app_pwm_channel_duty_set(&PWM2, 0, blue_value) == NRF_ERROR_BUSY);
@@ -150,6 +155,7 @@ void set_rgb_color(uint8_t new_color_data){
 
 /**@brief Function for updating the hit value when a hit is registered.
 *
+* @details The value will cycle between the values from 1 between 255.
 */
 
 uint8_t new_hit_value (void){
@@ -193,10 +199,6 @@ static void timers_init(void)
     APP_TIMER_INIT(APP_TIMER_PRESCALER, APP_TIMER_OP_QUEUE_SIZE, false);
 }
 
-void pwm_ready_callback(uint32_t pwm_id)    // PWM callback function
-{
-    ready_flag = true;
-}
 
 /**@brief Function for the PWM initialization.
  *
@@ -210,12 +212,12 @@ static void pwm_init(void)
     app_pwm_config_t pwm1_cfg = APP_PWM_DEFAULT_CONFIG_2CH(20000L, PWM_RED_PIN, PWM_GREEN_PIN);
     
     /* 1-channel PWM, 200Hz, output on pins. */
-    app_pwm_config_t pwm2_cfg = APP_PWM_DEFAULT_CONFIG_1CH(5000L, PWM_BLUE_PIN);
+    app_pwm_config_t pwm2_cfg = APP_PWM_DEFAULT_CONFIG_1CH(20000L, PWM_BLUE_PIN);
 
     pwm2_cfg.pin_polarity[0] = APP_PWM_POLARITY_ACTIVE_HIGH;
 
     /* Initialize and enable PWM. */
-    err_code = app_pwm_init(&PWM1, &pwm1_cfg, pwm_ready_callback);
+    err_code = app_pwm_init(&PWM1, &pwm1_cfg, NULL);
     APP_ERROR_CHECK(err_code);
     
     err_code = app_pwm_init(&PWM2,&pwm2_cfg,NULL);
@@ -226,8 +228,6 @@ static void pwm_init(void)
 
     set_rgb_color(100);
 }
-
-
 
 /**@brief Function for the GAP initialization.
  *
@@ -295,15 +295,17 @@ void advertising_init(void)
  * @param[in] pin_state Pointer to received data from read/write characteristic.
  */
 
-
 static void pin_write_handler(ble_lbs_t * p_lbs, uint8_t * pin_state)
 {  
     
+    // Sets motor values for every motor.
+
     twi_set_motor(pin_state);
 
+    // Sets the color for every RGB-LED.
+
     uint8_t web_color_data = read_byte(pin_state, 5);
-    if (web_color_data != 0)
-      set_rgb_color(web_color_data);
+    set_rgb_color(web_color_data);
 
     // Checks every pin_state[i] bitwise to a given binary number with a for loop.
        
@@ -318,7 +320,6 @@ static void pin_write_handler(ble_lbs_t * p_lbs, uint8_t * pin_state)
       else
           nrf_gpio_pin_clear((PIN_OUTPUT_START+i));
      } 
-
 }
 
 /**@brief Function for initializing services that will be used by the application.
@@ -472,7 +473,7 @@ static void on_ble_evt(ble_evt_t * p_ble_evt)
             
             user_connected = false;
             advertising_start();
-            //twi_clear_motorshield();
+            twi_clear_motorshield();
             break;
 
         case BLE_GAP_EVT_SEC_PARAMS_REQUEST:
@@ -510,6 +511,7 @@ static void ble_evt_dispatch(ble_evt_t * p_ble_evt)
  *
  * @details Initializes the SoftDevice and the BLE event interrupt.
  */
+
 static void ble_stack_init(void)
 {
     uint32_t err_code;
@@ -542,9 +544,6 @@ static void ble_stack_init(void)
     err_code = softdevice_ble_evt_handler_set(ble_evt_dispatch);
     APP_ERROR_CHECK(err_code);
 }
-
-
-
 
 /**@brief Function for writing the proper notification when an input is received.
 **/
@@ -640,7 +639,6 @@ int main(void)
         power_manage();
     }
 }
-
 
 /**
  * @}

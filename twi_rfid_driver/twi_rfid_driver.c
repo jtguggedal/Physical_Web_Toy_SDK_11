@@ -5,7 +5,6 @@
 #include "nrf_delay.h"
 #include "app_timer.h"
 
-uint8_t rfid_value = 0xFF;
 uint8_t rfid_counter = 1;
 
 //Initialization-array
@@ -23,6 +22,10 @@ static const nrf_drv_twi_t twi_rfid = NRF_DRV_TWI_INSTANCE(1);
 //Define the TWI-channel read timer.
 
 APP_TIMER_DEF(read_timer);
+
+/** @brief Function which readies the rfid shield.
+*
+*/
 
 void ready_rfid_shield(void){
   nrf_drv_twi_tx(&twi_rfid, ADR_RFID_SLAVE, rfid_init_array_1, sizeof(rfid_init_array_1), false);
