@@ -60,6 +60,8 @@
 #define PWM_GREEN_PIN                   23
 #define PWM_BLUE_PIN                    2
 
+#define PIEZO_BUZZER_PIN                3
+
 #define DEVICE_NAME                     "RADIO CAR"                                        /**< Name of device. Will be included in the advertising data. */
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
@@ -182,12 +184,28 @@ static void pin_output_init(void)
     nrf_gpio_cfg_output(LED_MOTOR_TWI_WRITE_PIN);
     nrf_gpio_cfg_output(LED_RFID_TWI_READ_PIN);
 
+    nrf_gpio_cfg_output(PIEZO_BUZZER_PIN);
+    nrf_gpio_pin_clear(PIEZO_BUZZER_PIN);
+
     nrf_gpio_pin_set(LED_CONNECTED_PIN);
     nrf_gpio_pin_set(LED_ADVERTISING_PIN);
     nrf_gpio_pin_set(LED_MOTOR_TWI_WRITE_PIN);
     nrf_gpio_pin_set(LED_RFID_TWI_READ_PIN);
 }
 
+/**@brief Function for playing notes on a piezo buzzer.
+*
+*/
+
+void playNote(uint16_t note){
+
+  for(uint32_t i = 0; i < 50000; i += note * 2){
+    nrf_gpio_pin_set(PIEZO_BUZZER_PIN);
+    nrf_delay_us(note);
+    nrf_gpio_pin_clear(PIEZO_BUZZER_PIN);
+    nrf_delay_us(note);
+  }
+}
 
 /**@brief Function for the Timer initialization.
  *
@@ -311,9 +329,12 @@ static void pin_write_handler(ble_lbs_t * p_lbs, uint8_t * pin_state)
        
     for(uint8_t i = 0; i < PIN_OUTPUT_OFFSET; i++){
       if (read_bit(pin_state, 1, i)){
+          
           set_rgb_color(2);
+          playNote(536);
           nrf_delay_ms(50);
           nrf_gpio_pin_set((PIN_OUTPUT_START+i));
+          playNote(536);
           nrf_delay_ms(50);
           set_rgb_color(250);
           }
@@ -430,7 +451,6 @@ void radio_notification_evt_handler(void* p_context)
         {
             // Advertises that the device is connectable
             advertising_init();
-
         }
         advertising_switch_counter++;
         if(advertising_switch_counter % 2 == 0 && user_connected == false)
@@ -551,6 +571,9 @@ static void ble_stack_init(void)
 static void pin_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action){
     if(pin == IR_RECEIVER_PIN_1 || pin == IR_RECEIVER_PIN_2 || pin == IR_RECEIVER_PIN_3){
       hit_counter = new_hit_value();
+      playNote(1516);
+      nrf_delay_ms(50);
+      playNote(1607);
 
       if(pin == IR_RECEIVER_PIN_1)            
             ble_lbs_on_button_change(&m_lbs, hit_counter, 0);
@@ -563,6 +586,16 @@ static void pin_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t ac
     else if(pin == RFID_INTERRUPT_PIN) {
             rfid_counter = rfid_read_event_handler();
             ble_lbs_on_button_change(&m_lbs, rfid_counter, 4);
+
+            if(rfid_counter % 20 == 0){
+            playNote(1072);
+            nrf_delay_ms(30);
+            playNote(1012);
+            nrf_delay_ms(30);
+            playNote(955);
+            nrf_delay_ms(30);
+            playNote(901); 
+            }
     }
 }
 
@@ -624,16 +657,25 @@ int main(void)
     advertising_init();
     conn_params_init();
 
+    //Starts advertising
     advertising_start();
 
+    //Initialize shields
     twi_motordriver_init();
     twi_rfid_init();
     
+    //Initialize GPIO
     nrf_gpiote_init();
     pin_output_init();
     pwm_init();
 
-    set_rgb_color(0);    
+    //Feedback, notifying the user that the DK is ready
+    set_rgb_color(0);
+    playNote(1607);
+    nrf_delay_ms(30);
+    playNote(1516);
+    nrf_delay_ms(30);
+    playNote(1431);
 
      // Enter main loop.
     for (;;)
