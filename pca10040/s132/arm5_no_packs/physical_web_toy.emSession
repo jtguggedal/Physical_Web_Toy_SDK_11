@@ -48,13 +48,13 @@
  </TraceWindow>
  <Watch1>
   <Watches active="1" update="Twice a Second" >
-   <Watchpoint linenumber="440" radix="-1" name="advertising_switch_counter" expression="advertising_switch_counter" filename="../../../main.c" />
-   <Watchpoint linenumber="124" radix="10" name="color_data" expression="color_data" filename="../../../main.c" />
-   <Watchpoint linenumber="124" radix="10" name="old_color_data" expression="old_color_data" filename="../../../main.c" />
-   <Watchpoint linenumber="130" radix="-1" name="green_state" expression="green_state" filename="../../../main.c" />
-   <Watchpoint linenumber="124" radix="10" name="new_color_data" expression="new_color_data" filename="../../../main.c" />
-   <Watchpoint linenumber="679" radix="16" name="APP_ERROR_CHECK" expression="APP_ERROR_CHECK" filename="../../../main.c" />
    <Watchpoint linenumber="679" radix="-1" name="err_code" expression="err_code" filename="../../../main.c" />
+   <Watchpoint linenumber="679" radix="16" name="APP_ERROR_CHECK" expression="APP_ERROR_CHECK" filename="../../../main.c" />
+   <Watchpoint linenumber="124" radix="10" name="new_color_data" expression="new_color_data" filename="../../../main.c" />
+   <Watchpoint linenumber="130" radix="-1" name="green_state" expression="green_state" filename="../../../main.c" />
+   <Watchpoint linenumber="124" radix="10" name="old_color_data" expression="old_color_data" filename="../../../main.c" />
+   <Watchpoint linenumber="124" radix="10" name="color_data" expression="color_data" filename="../../../main.c" />
+   <Watchpoint linenumber="440" radix="-1" name="advertising_switch_counter" expression="advertising_switch_counter" filename="../../../main.c" />
   </Watches>
  </Watch1>
  <Watch2>
@@ -67,8 +67,8 @@
   <Watches active="0" update="Never" />
  </Watch4>
  <Files>
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="27" debugPath="../../../main.c" y="332" path="../../../main.c" left="0" selected="1" name="unnamed" top="320" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="31" debugPath="../../../../../../components/drivers_nrf/twi_master/nrf_drv_twi.h" y="300" path="../../../../../../components/drivers_nrf/twi_master/nrf_drv_twi.h" left="0" selected="0" name="unnamed" top="280" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="12" debugPath="../../../main.c" y="680" path="../../../main.c" left="0" selected="1" name="unnamed" top="663" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../../../../components/drivers_nrf/twi_master/nrf_drv_twi.h" y="300" path="../../../../../../components/drivers_nrf/twi_master/nrf_drv_twi.h" left="0" selected="0" name="unnamed" top="282" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../../../../components/libraries/uart/retarget.c" y="29" path="../../../../../../components/libraries/uart/retarget.c" left="0" selected="0" name="unnamed" top="10" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../config/experimental_ble_app_blinky_s132_pca10040/nrf_drv_config.h" y="152" path="../../../config/experimental_ble_app_blinky_s132_pca10040/nrf_drv_config.h" left="0" selected="0" name="unnamed" top="149" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../../../../components/ble/ble_services/ble_lbs/ble_lbs.h" y="99" path="../../../../../../components/ble/ble_services/ble_lbs/ble_lbs.h" left="0" selected="0" name="unnamed" top="85" />
@@ -80,7 +80,7 @@
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../../../../components/softdevice/common/softdevice_handler/softdevice_handler.c" y="103" path="../../../../../../components/softdevice/common/softdevice_handler/softdevice_handler.c" left="0" selected="0" name="unnamed" top="467" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../twi_motordriver/twi_motordriver.c" y="68" path="../../../twi_motordriver/twi_motordriver.c" left="0" selected="0" name="unnamed" top="108" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../../../../components/ble/ble_radio_notification/ble_radio_notification.h" y="39" path="../../../../../../components/ble/ble_radio_notification/ble_radio_notification.h" left="0" selected="0" name="unnamed" top="20" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="4" debugPath="../../../twi_rfid_driver/twi_rfid_driver.c" y="61" path="../../../twi_rfid_driver/twi_rfid_driver.c" left="0" selected="0" name="unnamed" top="52" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../twi_rfid_driver/twi_rfid_driver.c" y="61" path="../../../twi_rfid_driver/twi_rfid_driver.c" left="0" selected="0" name="unnamed" top="52" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../../../../components/libraries/timer/app_timer.h" y="157" path="../../../../../../components/libraries/timer/app_timer.h" left="0" selected="0" name="unnamed" top="141" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../advertising.h" y="7" path="../../../advertising.h" left="0" selected="0" name="unnamed" top="0" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../../../../components/libraries/timer/app_timer.c" y="1016" path="../../../../../../components/libraries/timer/app_timer.c" left="0" selected="0" name="unnamed" top="1004" />
@@ -91,8 +91,8 @@
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="C:/Program Files (x86)/SEGGER/SEGGER Embedded Studio 2.16a/include/stdbool.h" y="21" path="C:/Program Files (x86)/SEGGER/SEGGER Embedded Studio 2.16a/include/stdbool.h" left="0" selected="0" name="unnamed" top="0" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../../../../components/libraries/util/nordic_common.h" y="0" path="../../../../../../components/libraries/util/nordic_common.h" left="0" selected="0" name="unnamed" top="69" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../twi_motordriver/twi_motordriver.h" y="0" path="../../../twi_motordriver/twi_motordriver.h" left="0" selected="0" name="unnamed" top="53" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="10" debugPath="../../../../../../components/drivers_nrf/twi_master/nrf_drv_twi.c" y="12" path="../../../../../../components/drivers_nrf/twi_master/nrf_drv_twi.c" left="0" selected="0" name="unnamed" top="0" />
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../ble_lbs/ble_lbs.h" y="40" path="../../../ble_lbs/ble_lbs.h" left="0" selected="0" name="unnamed" top="35" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../../../../components/drivers_nrf/twi_master/nrf_drv_twi.c" y="12" path="../../../../../../components/drivers_nrf/twi_master/nrf_drv_twi.c" left="0" selected="0" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="3" debugPath="../../../ble_lbs/ble_lbs.h" y="99" path="../../../ble_lbs/ble_lbs.h" left="0" selected="0" name="unnamed" top="84" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../../../../components/libraries/pwm/app_pwm.h" y="19" path="../../../../../../components/libraries/pwm/app_pwm.h" left="0" selected="0" name="unnamed" top="10" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../read_set_bit/read_set_bit.c" y="0" path="../../../read_set_bit/read_set_bit.c" left="0" selected="0" name="unnamed" top="1" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../../../../components/drivers_nrf/ppi/nrf_drv_ppi.h" y="212" path="../../../../../../components/drivers_nrf/ppi/nrf_drv_ppi.h" left="0" selected="0" name="unnamed" top="189" />
