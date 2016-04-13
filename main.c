@@ -60,7 +60,7 @@
 #define PWM_GREEN_PIN                   23
 #define PWM_BLUE_PIN                    2
 
-#define DEVICE_NAME                     "nrf_PhysWebToy"                                        /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "RADIO CAR"                                        /**< Name of device. Will be included in the advertising data. */
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
 #define APP_ADV_TIMEOUT_IN_SECONDS      BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED       /**< The advertising time-out (in units of seconds). When set to 0, we will never time out. */
@@ -147,8 +147,8 @@ void set_rgb_color(uint8_t new_color_data){
           break;
     }
     
-    while (app_pwm_channel_duty_set(&PWM1, 0, red_value) == NRF_ERROR_BUSY);
-    while (app_pwm_channel_duty_set(&PWM1, 1, green_value) == NRF_ERROR_BUSY);
+    while (app_pwm_channel_duty_set(&PWM1, 1, red_value) == NRF_ERROR_BUSY);
+    while (app_pwm_channel_duty_set(&PWM1, 0, green_value) == NRF_ERROR_BUSY);
     while (app_pwm_channel_duty_set(&PWM2, 0, blue_value) == NRF_ERROR_BUSY);
     
 }
@@ -616,7 +616,6 @@ int main(void)
     uint8_t err_code;
 
     // Initialize
-    pin_output_init();
     timers_init();
     advertising_timer_init();
     ble_stack_init();
@@ -624,12 +623,15 @@ int main(void)
     services_init();
     advertising_init();
     conn_params_init();
+
+    advertising_start();
+
     twi_motordriver_init();
     twi_rfid_init();
-    nrf_gpiote_init();
-    pwm_init();
     
-    advertising_start();
+    nrf_gpiote_init();
+    pin_output_init();
+    pwm_init();
 
     set_rgb_color(0);    
 
