@@ -64,12 +64,13 @@ void twi_init_motorshield(void){
 
     // Wait for response from the motor shield that confirms the communication channel is working
     // ** If no motor shield is attached to the DK, the program will be stuck in infinite loop at this point
+    nrf_gpio_pin_clear(WRITE_LED);
     uint8_t checkRxData = 0x01;
     do{
         nrf_drv_twi_rx(&twi_motor, ADR_MOTOR_SLAVE, &checkRxData, 1);
         nrf_delay_us(5);
     }while(checkRxData != 0x00);    // If checkRxData becomes 0x00, the motor shield is signaling that the TWI channel works
-    
+    nrf_gpio_pin_set(WRITE_LED);
 
     // Send values to the motor shield for further communication set up
     // These packages contains information about frequency and other settings to make the channel work

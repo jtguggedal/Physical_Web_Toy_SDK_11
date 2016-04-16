@@ -184,13 +184,13 @@ static void pin_output_init(void)
     nrf_gpio_cfg_output(LED_MOTOR_TWI_WRITE_PIN);
     nrf_gpio_cfg_output(LED_RFID_TWI_READ_PIN);
 
-    nrf_gpio_cfg_output(PIEZO_BUZZER_PIN);
-    nrf_gpio_pin_clear(PIEZO_BUZZER_PIN);
-
     nrf_gpio_pin_set(LED_CONNECTED_PIN);
     nrf_gpio_pin_set(LED_ADVERTISING_PIN);
     nrf_gpio_pin_set(LED_MOTOR_TWI_WRITE_PIN);
     nrf_gpio_pin_set(LED_RFID_TWI_READ_PIN);
+
+    nrf_gpio_cfg_output(PIEZO_BUZZER_PIN);
+    nrf_gpio_pin_clear(PIEZO_BUZZER_PIN);
 }
 
 /**@brief Function for playing notes on a piezo buzzer.
@@ -589,12 +589,16 @@ static void pin_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t ac
 
             if(rfid_counter % 20 == 0){
             playNote(1072);
-            nrf_delay_ms(30);
+            set_rgb_color(2);
+            nrf_delay_ms(10);
             playNote(1012);
-            nrf_delay_ms(30);
+            set_rgb_color(1);
+            nrf_delay_ms(10);
             playNote(955);
-            nrf_delay_ms(30);
+            set_rgb_color(2);
+            nrf_delay_ms(10);
             playNote(901); 
+            set_rgb_color(0);
             }
     }
 }
@@ -610,13 +614,16 @@ void nrf_gpiote_init(void){
         err_code = nrf_drv_gpiote_init();
       }
     APP_ERROR_CHECK(err_code);
-    nrf_drv_gpiote_in_config_t config = GPIOTE_CONFIG_IN_SENSE_TOGGLE(false);
-    config.pull = NRF_GPIO_PIN_PULLDOWN;
+    nrf_drv_gpiote_in_config_t ir_config = GPIOTE_CONFIG_IN_SENSE_TOGGLE(false);
+    ir_config.pull = NRF_GPIO_PIN_NOPULL;
 
-    nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_1, &config, pin_event_handler);
-    nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_2, &config, pin_event_handler);
-    nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_3, &config, pin_event_handler);
-    nrf_drv_gpiote_in_init(RFID_INTERRUPT_PIN, &config, pin_event_handler);
+    nrf_drv_gpiote_in_config_t rfid_config = GPIOTE_CONFIG_IN_SENSE_TOGGLE(false);
+    rfid_config.pull = NRF_GPIO_PIN_PULLDOWN;
+
+    nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_1, &ir_config, pin_event_handler);
+    nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_2, &ir_config, pin_event_handler);
+    nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_3, &ir_config, pin_event_handler);
+    nrf_drv_gpiote_in_init(RFID_INTERRUPT_PIN, &rfid_config, pin_event_handler);
 
     nrf_drv_gpiote_in_event_enable(IR_RECEIVER_PIN_1, true);
     nrf_drv_gpiote_in_event_enable(IR_RECEIVER_PIN_2, true);
@@ -645,9 +652,12 @@ static void power_manage(void)
 /**@brief Function for application main entry.
  */
 int main(void)
-{
-    uint8_t err_code;
-
+{ 
+    //Initialize GPIO
+    nrf_gpiote_init();
+    pin_output_init();
+    pwm_init();  
+    
     // Initialize
     timers_init();
     advertising_timer_init();
@@ -663,11 +673,6 @@ int main(void)
     //Initialize shields
     twi_motordriver_init();
     twi_rfid_init();
-    
-    //Initialize GPIO
-    nrf_gpiote_init();
-    pin_output_init();
-    pwm_init();
 
     //Feedback, notifying the user that the DK is ready
     set_rgb_color(0);
