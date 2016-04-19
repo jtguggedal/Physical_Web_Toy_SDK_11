@@ -49,12 +49,12 @@
  <Watch1>
   <Watches active="1" update="Twice a Second" >
    <Watchpoint linenumber="440" radix="-1" name="advertising_switch_counter" expression="advertising_switch_counter" filename="../../../main.c" />
-   <Watchpoint linenumber="684" radix="16" name="APP_ERROR_CHECK" expression="APP_ERROR_CHECK" filename="../../../main.c" />
+   <Watchpoint linenumber="124" radix="10" name="color_data" expression="color_data" filename="../../../main.c" />
    <Watchpoint linenumber="124" radix="10" name="old_color_data" expression="old_color_data" filename="../../../main.c" />
    <Watchpoint linenumber="130" radix="-1" name="green_state" expression="green_state" filename="../../../main.c" />
    <Watchpoint linenumber="124" radix="10" name="new_color_data" expression="new_color_data" filename="../../../main.c" />
-   <Watchpoint linenumber="124" radix="10" name="color_data" expression="color_data" filename="../../../main.c" />
-   <Watchpoint linenumber="684" radix="-1" name="err_code" expression="err_code" filename="../../../main.c" />
+   <Watchpoint linenumber="686" radix="16" name="APP_ERROR_CHECK" expression="APP_ERROR_CHECK" filename="../../../main.c" />
+   <Watchpoint linenumber="686" radix="-1" name="err_code" expression="err_code" filename="../../../main.c" />
   </Watches>
  </Watch1>
  <Watch2>
@@ -67,7 +67,7 @@
   <Watches active="0" update="Never" />
  </Watch4>
  <Files>
-  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../main.c" y="61" path="../../../main.c" left="0" selected="1" name="unnamed" top="50" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="22" debugPath="../../../main.c" y="13" path="../../../main.c" left="0" selected="1" name="unnamed" top="322" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../../../../components/drivers_nrf/twi_master/nrf_drv_twi.h" y="300" path="../../../../../../components/drivers_nrf/twi_master/nrf_drv_twi.h" left="0" selected="0" name="unnamed" top="282" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../../../../components/libraries/uart/retarget.c" y="29" path="../../../../../../components/libraries/uart/retarget.c" left="0" selected="0" name="unnamed" top="10" />
   <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="../../../config/experimental_ble_app_blinky_s132_pca10040/nrf_drv_config.h" y="152" path="../../../config/experimental_ble_app_blinky_s132_pca10040/nrf_drv_config.h" left="0" selected="0" name="unnamed" top="149" />

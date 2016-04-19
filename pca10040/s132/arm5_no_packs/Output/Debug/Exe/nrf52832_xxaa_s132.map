@@ -7436,7 +7436,7 @@ Linker script and memory map
                 0x00000001                . = ASSERT (((__ctors_start__ == __ctors_end__) || ((__ctors_end__ >= __FLASH_segment_start__) && (__ctors_end__ <= __FLASH_segment_end__))), error: .ctors is too large to fit in FLASH memory segment)
                 0x00025458                __rodata_load_start__ = ALIGN (__ctors_end__, 0x4)
 
-.rodata         0x00025458      0x2fe
+.rodata         0x00025458      0x302
                 0x00025458                __rodata_start__ = .
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.advertising_timer
@@ -7451,49 +7451,49 @@ Linker script and memory map
                 0x0002546c                m_pwm_PWM2_timer
  .rodata.PWM2   0x00025474        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
                 0x00025474                PWM2
- .rodata        0x0002547c       0x98 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
- .rodata        0x00025514       0x70 Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
+ .rodata        0x0002547c       0x9c Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+ .rodata        0x00025518       0x70 Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
  .rodata.twi_rfid
-                0x00025584        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
- .rodata        0x0002558c       0x10 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+                0x00025588        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .rodata        0x00025590       0x10 Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
  .rodata.twi_motor
-                0x0002559c        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
- .rodata        0x000255a4       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+                0x000255a0        0x8 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+ .rodata        0x000255a8       0x28 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
  .rodata.m_default_config
-                0x000255cc       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
- .rodata        0x000255ec       0x10 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+                0x000255d0       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .rodata        0x000255f0       0x10 Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
  .rodata.m_conn_params_timer_id
-                0x000255fc        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+                0x00025600        0x4 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
  .rodata.m_default_config
-                0x00025600       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_timer.o
- .rodata        0x00025620       0x8c Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
- .rodata        0x000256ac       0xaa Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
-                0x00025756                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
-                0x000002fe                __rodata_size__ = SIZEOF (.rodata)
-                0x00025756                __rodata_load_end__ = __rodata_end__
+                0x00025604       0x20 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_timer.o
+ .rodata        0x00025624       0x8c Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+ .rodata        0x000256b0       0xaa Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+                0x0002575a                __rodata_end__ = (__rodata_start__ + SIZEOF (.rodata))
+                0x00000302                __rodata_size__ = SIZEOF (.rodata)
+                0x0002575a                __rodata_load_end__ = __rodata_end__
 
 .rel.dyn        0x00000000        0x0
  .rel.iplt      0x00000000        0x0 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
                 0x00000001                . = ASSERT (((__rodata_start__ == __rodata_end__) || ((__rodata_end__ >= __FLASH_segment_start__) && (__rodata_end__ <= __FLASH_segment_end__))), error: .rodata is too large to fit in FLASH memory segment)
-                0x00025758                __ARM.exidx_load_start__ = ALIGN (__rodata_end__, 0x4)
+                0x0002575c                __ARM.exidx_load_start__ = ALIGN (__rodata_end__, 0x4)
 
-.ARM.exidx      0x00025758        0x0
-                0x00025758                __ARM.exidx_start__ = .
-                0x00025758                __exidx_start = __ARM.exidx_start__
+.ARM.exidx      0x0002575c        0x0
+                0x0002575c                __ARM.exidx_start__ = .
+                0x0002575c                __exidx_start = __ARM.exidx_start__
  *(.ARM.exidx .ARM.exidx.*)
-                0x00025758                __ARM.exidx_end__ = (__ARM.exidx_start__ + SIZEOF (.ARM.exidx))
+                0x0002575c                __ARM.exidx_end__ = (__ARM.exidx_start__ + SIZEOF (.ARM.exidx))
                 0x00000000                __ARM.exidx_size__ = SIZEOF (.ARM.exidx)
-                0x00025758                __exidx_end = __ARM.exidx_end__
-                0x00025758                __ARM.exidx_load_end__ = __ARM.exidx_end__
+                0x0002575c                __exidx_end = __ARM.exidx_end__
+                0x0002575c                __ARM.exidx_load_end__ = __ARM.exidx_end__
                 0x00000001                . = ASSERT (((__ARM.exidx_start__ == __ARM.exidx_end__) || ((__ARM.exidx_end__ >= __FLASH_segment_start__) && (__ARM.exidx_end__ <= __FLASH_segment_end__))), error: .ARM.exidx is too large to fit in FLASH memory segment)
-                0x00025758                __fast_load_start__ = ALIGN (__ARM.exidx_end__, 0x4)
+                0x0002575c                __fast_load_start__ = ALIGN (__ARM.exidx_end__, 0x4)
 
-.fast           0x20002a00        0x0 load address 0x00025758
+.fast           0x20002a00        0x0 load address 0x0002575c
                 0x20002a00                __fast_start__ = .
  *(.fast .fast.*)
                 0x20002a00                __fast_end__ = (__fast_start__ + SIZEOF (.fast))
                 0x00000000                __fast_size__ = SIZEOF (.fast)
-                0x00025758                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
+                0x0002575c                __fast_load_end__ = (__fast_load_start__ + SIZEOF (.fast))
                 0x00000001                . = ASSERT (((__fast_load_start__ == __fast_load_end__) || ((__fast_load_end__ >= __FLASH_segment_start__) && (__fast_load_end__ <= __FLASH_segment_end__))), error: .fast is too large to fit in FLASH memory segment)
 
 .fast_run       0x20002a00        0x0
@@ -7503,9 +7503,9 @@ Linker script and memory map
                 0x00000000                __fast_run_size__ = SIZEOF (.fast_run)
                 0x20002a00                __fast_run_load_end__ = __fast_run_end__
                 0x00000001                . = ASSERT (((__fast_run_start__ == __fast_run_end__) || ((__fast_run_end__ >= __RAM_segment_start__) && (__fast_run_end__ <= __RAM_segment_end__))), error: .fast_run is too large to fit in RAM memory segment)
-                0x00025758                __data_load_start__ = ALIGN ((__fast_load_start__ + SIZEOF (.fast)), 0x4)
+                0x0002575c                __data_load_start__ = ALIGN ((__fast_load_start__ + SIZEOF (.fast)), 0x4)
 
-.data           0x20002a00       0x5c load address 0x00025758
+.data           0x20002a00       0x5c load address 0x0002575c
                 0x20002a00                __data_start__ = .
  *(.data .data.* .gnu.linkonce.d.*)
  .data.m_conn_handle
@@ -7534,13 +7534,13 @@ Linker script and memory map
                 0x20002a58                SystemCoreClock
                 0x20002a5c                __data_end__ = (__data_start__ + SIZEOF (.data))
                 0x0000005c                __data_size__ = SIZEOF (.data)
-                0x000257b4                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
+                0x000257b8                __data_load_end__ = (__data_load_start__ + SIZEOF (.data))
 
 .igot.plt       0x00000000        0x0
  .igot.plt      0x00000000        0x0 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
                 0x00000001                . = ASSERT (((__data_load_start__ == __data_load_end__) || ((__data_load_end__ >= __FLASH_segment_start__) && (__data_load_end__ <= __FLASH_segment_end__))), error: .data is too large to fit in FLASH memory segment)
 
-.data_run       0x20002a00       0x5c load address 0x00025758
+.data_run       0x20002a00       0x5c load address 0x0002575c
                 0x20002a00                __data_run_start__ = .
                 0x20002a5c                . = MAX ((__data_run_start__ + SIZEOF (.data)), .)
  *fill*         0x20002a00       0x5c 
@@ -7548,16 +7548,16 @@ Linker script and memory map
                 0x0000005c                __data_run_size__ = SIZEOF (.data_run)
                 0x20002a5c                __data_run_load_end__ = __data_run_end__
                 0x00000001                . = ASSERT (((__data_run_start__ == __data_run_end__) || ((__data_run_end__ >= __RAM_segment_start__) && (__data_run_end__ <= __RAM_segment_end__))), error: .data_run is too large to fit in RAM memory segment)
-                0x000257b4                __tdata_load_start__ = ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4)
+                0x000257b8                __tdata_load_start__ = ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4)
 
-.tdata          0x20002a5c        0x0 load address 0x000257b4
+.tdata          0x20002a5c        0x0 load address 0x000257b8
                 0x20002a5c                __tdata_start__ = .
  *(.tdata .tdata.*)
                 0x20002a5c                __tdata_end__ = (__tdata_start__ + SIZEOF (.tdata))
                 0x00000000                __tdata_size__ = SIZEOF (.tdata)
-                0x000257b4                __tdata_load_end__ = (__tdata_load_start__ + SIZEOF (.tdata))
-                0x000257b4                __FLASH_segment_used_end__ = (ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4) + SIZEOF (.tdata))
-                0x000257b4                __FLASH_segment_used_size__ = (__FLASH_segment_used_end__ - __FLASH_segment_start__)
+                0x000257b8                __tdata_load_end__ = (__tdata_load_start__ + SIZEOF (.tdata))
+                0x000257b8                __FLASH_segment_used_end__ = (ALIGN ((__data_load_start__ + SIZEOF (.data)), 0x4) + SIZEOF (.tdata))
+                0x000257b8                __FLASH_segment_used_size__ = (__FLASH_segment_used_end__ - __FLASH_segment_start__)
                 0x00000001                . = ASSERT (((__tdata_load_start__ == __tdata_load_end__) || ((__tdata_load_end__ >= __FLASH_segment_start__) && (__tdata_load_end__ <= __FLASH_segment_end__))), error: .tdata is too large to fit in FLASH memory segment)
 
 .tdata_run      0x20002a5c        0x0
@@ -8233,54 +8233,54 @@ OUTPUT(Output/Debug/Exe/nrf52832_xxaa_s132.elf elf32-littlearm)
  .debug_line    0x0000ee04       0xaf Output/nrf52832_xxaa_s132 Debug/Obj/nRF_Startup.o
  .debug_line    0x0000eeb3       0xc6 Output/nrf52832_xxaa_s132 Debug/Obj/nrf52_Vectors.o
 
-.debug_str      0x00000000    0x850d6
- .debug_str     0x00000000    0x7cd78 Output/nrf52832_xxaa_s132 Debug/Obj/main.o
-                              0x7da0a (size before relaxing)
- .debug_str     0x0007cd78       0xad Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
+.debug_str      0x00000000    0x850d8
+ .debug_str     0x00000000    0x7cd7a Output/nrf52832_xxaa_s132 Debug/Obj/main.o
+                              0x7da0c (size before relaxing)
+ .debug_str     0x0007cd7a       0xad Output/nrf52832_xxaa_s132 Debug/Obj/advertising.o
                               0x73b41 (size before relaxing)
- .debug_str     0x0007ce25      0x23c Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
+ .debug_str     0x0007ce27      0x23c Output/nrf52832_xxaa_s132 Debug/Obj/twi_rfid_driver.o
                               0x6e3ba (size before relaxing)
- .debug_str     0x0007d061      0x221 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
+ .debug_str     0x0007d063      0x221 Output/nrf52832_xxaa_s132 Debug/Obj/twi_motordriver.o
                               0x6df77 (size before relaxing)
- .debug_str     0x0007d282       0xb1 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
+ .debug_str     0x0007d284       0xb1 Output/nrf52832_xxaa_s132 Debug/Obj/read_set_bit.o
                                0x2ccb (size before relaxing)
- .debug_str     0x0007d333     0x118a Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
+ .debug_str     0x0007d335     0x118a Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_twi.o
                               0x70075 (size before relaxing)
- .debug_str     0x0007e4bd      0x43f Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
+ .debug_str     0x0007e4bf      0x43f Output/nrf52832_xxaa_s132 Debug/Obj/ble_lbs.o
                               0x73818 (size before relaxing)
- .debug_str     0x0007e8fc      0xed7 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
+ .debug_str     0x0007e8fe      0xed7 Output/nrf52832_xxaa_s132 Debug/Obj/bsp.o
                               0x6e5ec (size before relaxing)
- .debug_str     0x0007f7d3      0x353 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
+ .debug_str     0x0007f7d5      0x353 Output/nrf52832_xxaa_s132 Debug/Obj/ble_advdata.o
                               0x736b6 (size before relaxing)
- .debug_str     0x0007fb26      0x232 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
+ .debug_str     0x0007fb28      0x232 Output/nrf52832_xxaa_s132 Debug/Obj/ble_conn_params.o
                               0x74713 (size before relaxing)
- .debug_str     0x0007fd58       0xa8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
+ .debug_str     0x0007fd5a       0xa8 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_delay.o
                               0x6ae4b (size before relaxing)
- .debug_str     0x0007fe00      0x137 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
+ .debug_str     0x0007fe02      0x137 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_common.o
                               0x6ebd0 (size before relaxing)
- .debug_str     0x0007ff37      0xcda Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
+ .debug_str     0x0007ff39      0xcda Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_gpiote.o
                               0x701c4 (size before relaxing)
- .debug_str     0x00080c11     0x148e Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
+ .debug_str     0x00080c13     0x148e Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_uart.o
                               0x7056c (size before relaxing)
- .debug_str     0x0008209f      0xdc2 Output/nrf52832_xxaa_s132 Debug/Obj/app_pwm.o
+ .debug_str     0x000820a1      0xdc2 Output/nrf52832_xxaa_s132 Debug/Obj/app_pwm.o
                               0x70d06 (size before relaxing)
- .debug_str     0x00082e61      0x471 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_ppi.o
+ .debug_str     0x00082e63      0x471 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_ppi.o
                               0x6f70c (size before relaxing)
- .debug_str     0x000832d2      0x4c5 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_timer.o
+ .debug_str     0x000832d4      0x4c5 Output/nrf52832_xxaa_s132 Debug/Obj/nrf_drv_timer.o
                               0x6fb96 (size before relaxing)
- .debug_str     0x00083797      0x1c1 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
+ .debug_str     0x00083799      0x1c1 Output/nrf52832_xxaa_s132 Debug/Obj/app_button.o
                               0x6e242 (size before relaxing)
- .debug_str     0x00083958      0x158 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
+ .debug_str     0x0008395a      0x158 Output/nrf52832_xxaa_s132 Debug/Obj/app_error.o
                               0x6d86b (size before relaxing)
- .debug_str     0x00083ab0       0xa8 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
+ .debug_str     0x00083ab2       0xa8 Output/nrf52832_xxaa_s132 Debug/Obj/app_error_weak.o
                               0x6d9f5 (size before relaxing)
- .debug_str     0x00083b58      0x9dc Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
+ .debug_str     0x00083b5a      0x9dc Output/nrf52832_xxaa_s132 Debug/Obj/app_timer.o
                               0x6f2af (size before relaxing)
- .debug_str     0x00084534      0x1b2 Output/nrf52832_xxaa_s132 Debug/Obj/app_util_platform.o
+ .debug_str     0x00084536      0x1b2 Output/nrf52832_xxaa_s132 Debug/Obj/app_util_platform.o
                               0x6e0ec (size before relaxing)
- .debug_str     0x000846e6      0x4d9 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
+ .debug_str     0x000846e8      0x4d9 Output/nrf52832_xxaa_s132 Debug/Obj/softdevice_handler.o
                               0x78984 (size before relaxing)
- .debug_str     0x00084bbf      0x517 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
+ .debug_str     0x00084bc1      0x517 Output/nrf52832_xxaa_s132 Debug/Obj/system_nrf52.o
                               0x6af39 (size before relaxing)
 
 .comment        0x00000000       0x4e

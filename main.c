@@ -329,17 +329,20 @@ static void pin_write_handler(ble_lbs_t * p_lbs, uint8_t * pin_state)
        
     for(uint8_t i = 0; i < PIN_OUTPUT_OFFSET; i++){
       if (read_bit(pin_state, 1, i)){
-          
-          set_rgb_color(2);
-          playNote(536);
-          nrf_delay_ms(50);
-          nrf_gpio_pin_set((PIN_OUTPUT_START+i));
-          playNote(536);
-          nrf_delay_ms(50);
-          set_rgb_color(250);
+          if (i == 0) {
+            set_rgb_color(2);
+            playNote(536);
+            nrf_delay_ms(50);
+            nrf_gpio_pin_set((PIN_OUTPUT_START+i));
+            playNote(536);
+            nrf_delay_ms(50);
+            set_rgb_color(250);
+            }
+          else if (i == 1)
+            nrf_gpio_pin_set((PIN_OUTPUT_START+i));
           }
       else
-          nrf_gpio_pin_clear((PIN_OUTPUT_START+i));
+         nrf_gpio_pin_clear((PIN_OUTPUT_START+i));
      } 
 }
 
@@ -650,7 +653,9 @@ static void power_manage(void)
 
 
 /**@brief Function for application main entry.
- */
+*
+*/
+
 int main(void)
 { 
     //Initialize GPIO
