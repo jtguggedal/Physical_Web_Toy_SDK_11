@@ -11,10 +11,10 @@ static const nrf_drv_twi_t twi_motor = NRF_DRV_TWI_INSTANCE(0);
 
 // Define motor_t array with information about all motors
 motor_t motor[] =  {
-                        {ADR_MOTOR_1, PWM_1_PIN_1, PWM_1_PIN_2, BYTE_M_1_SP, BYTE_M_1_DIR, MOTOR_INIT_DIR},
-                        {ADR_MOTOR_2, PWM_2_PIN_1, PWM_2_PIN_2, BYTE_M_2_SP, BYTE_M_2_DIR, MOTOR_INIT_DIR},
-                        {ADR_MOTOR_3, PWM_3_PIN_1, PWM_3_PIN_2, BYTE_M_3_SP, BYTE_M_3_DIR, MOTOR_INIT_DIR},
-                        {ADR_MOTOR_4, PWM_4_PIN_1, PWM_4_PIN_2, BYTE_M_4_SP, BYTE_M_4_DIR, MOTOR_INIT_DIR}
+                        {ADR_MOTOR_1, PWM_1_PIN_1, PWM_1_PIN_2, BYTE_M_1_SP, BIT_M_1_DIR, MOTOR_INIT_DIR},
+                        {ADR_MOTOR_2, PWM_2_PIN_1, PWM_2_PIN_2, BYTE_M_2_SP, BIT_M_2_DIR, MOTOR_INIT_DIR},
+                        {ADR_MOTOR_3, PWM_3_PIN_1, PWM_3_PIN_2, BYTE_M_3_SP, BIT_M_3_DIR, MOTOR_INIT_DIR},
+                        {ADR_MOTOR_4, PWM_4_PIN_1, PWM_4_PIN_2, BYTE_M_4_SP, BIT_M_4_DIR, MOTOR_INIT_DIR}
                    };
 
 
@@ -117,7 +117,7 @@ void twi_set_motor(uint8_t * motor_data){
     nrf_gpio_pin_clear(WRITE_LED);
     for(uint8_t m = 0; m < 4; m++) 
     {
-        twi_set_motor_dir(motor[m].pwm_pin_1, motor[m].pwm_pin_2, m, motor_data[motor[m].byte_index_dir]);
+        twi_set_motor_dir(motor[m].pwm_pin_1, motor[m].pwm_pin_2, m, read_bit(motor_data, BYTE_M_DIR, motor[m].bit_index_dir));
         twi_set_speed(motor[m].adr, motor_data[motor[m].byte_index_sp]);
     }
     nrf_gpio_pin_set(WRITE_LED);    

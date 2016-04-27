@@ -62,7 +62,7 @@
 
 #define PIEZO_BUZZER_PIN                3
 
-#define DEVICE_NAME                     "RADIO CAR"                                        /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "BLUE-ORANGE CAR"                                        /**< Name of device. Will be included in the advertising data. */
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
 #define APP_ADV_TIMEOUT_IN_SECONDS      BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED       /**< The advertising time-out (in units of seconds). When set to 0, we will never time out. */

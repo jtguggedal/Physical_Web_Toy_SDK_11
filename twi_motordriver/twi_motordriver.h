@@ -37,11 +37,14 @@
 
 
 // Define the byte offset to the byte in motor_data that contains data about the direction for each motor
-#define BYTE_M_1_DIR    14
-#define BYTE_M_2_DIR    15
-#define BYTE_M_3_DIR    16
-#define BYTE_M_4_DIR    17
+#define BYTE_M_DIR      14
 
+
+// Define the bit offset to the byte in motor_data that contains data about the direction for each motor
+#define BIT_M_1_DIR      0
+#define BIT_M_2_DIR      1
+#define BIT_M_3_DIR      2
+#define BIT_M_4_DIR      3
 
 // Set initial motor direction to 0
 #define MOTOR_INIT_DIR  0
@@ -71,6 +74,6 @@ typedef struct
     uint8_t   pwm_pin_1;          // Address to the PWM pin 1 associated with the motor
     uint8_t   pwm_pin_2;          // Address to the PWM pin 2 associated with the motor
     uint8_t   byte_index_sp;      // Index for the byte within the received array from the event handler that holds information about the speed
-    uint8_t   byte_index_dir;     // Index for the byte within the received array from the event handler that holds information about the direction
+    uint8_t   bit_index_dir;      // Index for the bit within the received array from the event handler that holds information about the direction
     uint8_t   direction;          // The motor's current direction of rotation
 } motor_t;
