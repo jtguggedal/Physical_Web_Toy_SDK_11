@@ -47,8 +47,8 @@
 #define LED_MOTOR_TWI_WRITE_PIN         19                                          /**< Is on when the motor driver writes to the shield. */
 #define LED_RFID_TWI_READ_PIN           20                                          /**< Is on when the RFID driver reads from the TWI-channel. */
 
-#define PIN_OUTPUT_START                11                                           /**< First PIN out of 8 which will be uses as outputs. The seven subsequent pins will also turn into outputs. >**/
-#define PIN_OUTPUT_OFFSET               2
+#define PIN_OUTPUT_START                12                                           /**< First PIN out of 8 which will be uses as outputs. The seven subsequent pins will also turn into outputs. >**/
+#define PIN_OUTPUT_OFFSET               1
 
 #define IR_RECEIVER_PIN_1               13                                          /**< Button that will trigger the notification event with the LED Button Service */
 #define IR_RECEIVER_PIN_2               14
@@ -59,10 +59,11 @@
 #define PWM_RED_PIN                     22
 #define PWM_GREEN_PIN                   23
 #define PWM_BLUE_PIN                    2
+#define PWM_IR_PIN                      11
 
 #define PIEZO_BUZZER_PIN                3
 
-#define DEVICE_NAME                     "PROTO CAR"                                        /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "PROTO CAR"                            /**< Name of device. Will be included in the advertising data. */
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
 #define APP_ADV_TIMEOUT_IN_SECONDS      BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED       /**< The advertising time-out (in units of seconds). When set to 0, we will never time out. */
@@ -230,7 +231,7 @@ static void pwm_init(void)
     app_pwm_config_t pwm1_cfg = APP_PWM_DEFAULT_CONFIG_2CH(20000L, PWM_RED_PIN, PWM_GREEN_PIN);
     
     /* 1-channel PWM, 200Hz, output on pins. */
-    app_pwm_config_t pwm2_cfg = APP_PWM_DEFAULT_CONFIG_1CH(20000L, PWM_BLUE_PIN);
+    app_pwm_config_t pwm2_cfg = APP_PWM_DEFAULT_CONFIG_2CH(26L, PWM_BLUE_PIN, PWM_IR_PIN);
 
     pwm2_cfg.pin_polarity[0] = APP_PWM_POLARITY_ACTIVE_HIGH;
 
@@ -333,7 +334,7 @@ static void pin_write_handler(ble_lbs_t * p_lbs, uint8_t * pin_state)
             set_rgb_color(2);
             playNote(536);
             nrf_delay_ms(50);
-            nrf_gpio_pin_set((PIN_OUTPUT_START+i));
+            while (app_pwm_channel_duty_set(&PWM2, 1, 50) == NRF_ERROR_BUSY);;
             playNote(536);
             nrf_delay_ms(50);
             set_rgb_color(250);
@@ -341,6 +342,8 @@ static void pin_write_handler(ble_lbs_t * p_lbs, uint8_t * pin_state)
           else if (i == 1)
             nrf_gpio_pin_set((PIN_OUTPUT_START+i));
           }
+      else if(!read_bit(pin_state, 1, 0))
+            while (app_pwm_channel_duty_set(&PWM2, 1, 0) == NRF_ERROR_BUSY);
       else
          nrf_gpio_pin_clear((PIN_OUTPUT_START+i));
      } 
@@ -665,7 +668,7 @@ int main(void)
     
     // Initialize
     timers_init();
-    advertising_timer_init();
+    
     ble_stack_init();
     gap_params_init();
     services_init();
@@ -673,6 +676,7 @@ int main(void)
     conn_params_init();
 
     //Starts advertising
+    advertising_timer_init();
     advertising_start();
 
     //Initialize shields

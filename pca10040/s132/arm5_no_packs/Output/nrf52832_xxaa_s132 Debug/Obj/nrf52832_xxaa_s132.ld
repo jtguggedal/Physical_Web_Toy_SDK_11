@@ -24,8 +24,8 @@ SECTIONS
   __STACKSIZE_UND__ = 0;
   __STACKSIZE__ = 2048;
 
-  __vectors_ram_load_start__ = 0x20002a00;
-  .vectors_ram 0x20002a00 (NOLOAD) : AT(0x20002a00)
+  __vectors_ram_load_start__ = 0x20002080;
+  .vectors_ram 0x20002080 (NOLOAD) : AT(0x20002080)
   {
     __vectors_ram_start__ = .;
     *(.vectors_ram .vectors_ram.*)
