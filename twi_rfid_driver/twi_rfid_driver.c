@@ -1,6 +1,6 @@
 #include <stdint.h>
 #include "twi_rfid_driver.h"
-#include "nrf_drv_timer.h"
+//#include "nrf_drv_timer.h"
 #include "nrf_gpio.h"
 #include "nrf_delay.h"
 #include "app_timer.h"

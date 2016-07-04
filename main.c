@@ -34,6 +34,8 @@
 #include "softdevice_handler.h"
 
 #include "advertising.h"
+#include "infrared_communication.h"
+#include "ir_lib.h"
 #include "read_set_bit.h"
 #include "twi_motordriver.h"
 #include "twi_rfid_driver.h"
@@ -47,28 +49,23 @@
 #define LED_MOTOR_TWI_WRITE_PIN         19                                          /**< Is on when the motor driver writes to the shield. */
 #define LED_RFID_TWI_READ_PIN           20                                          /**< Is on when the RFID driver reads from the TWI-channel. */
 
-#define PIN_OUTPUT_START                12                                           /**< First PIN out of 8 which will be uses as outputs. The seven subsequent pins will also turn into outputs. >**/
+#define PIN_OUTPUT_START                12                                          /**< First PIN out of 8 which will be used as outputs. The seven subsequent pins will also turn into outputs. >**/
 #define PIN_OUTPUT_OFFSET               1
 
+#define IR_OUTPUT_PIN                   11
 #define IR_RECEIVER_PIN_1               13                                          /**< Button that will trigger the notification event with the LED Button Service */
 #define IR_RECEIVER_PIN_2               14
 #define IR_RECEIVER_PIN_3               15
 #define RFID_INTERRUPT_PIN              16
 
-#define PWM_PERIOD                      5000L
-#define PWM_RED_PIN                     22
-#define PWM_GREEN_PIN                   23
-#define PWM_BLUE_PIN                    2
-#define PWM_IR_PIN                      11
-
 #define PIEZO_BUZZER_PIN                3
 
-#define DEVICE_NAME                     "PROTO CAR"                            /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "WHITE CAR"                                 /**< Name of device. Will be included in the advertising data. */
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
 #define APP_ADV_TIMEOUT_IN_SECONDS      BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED       /**< The advertising time-out (in units of seconds). When set to 0, we will never time out. */
 
-#define APP_TIMER_PRESCALER             15                                           /**< Value of the RTC1 PRESCALER register. */
+#define APP_TIMER_PRESCALER             0                                           /**< Value of the RTC1 PRESCALER register. */
 #define APP_TIMER_MAX_TIMERS            6                                           /**< Maximum number of simultaneously created timers. */
 #define APP_TIMER_OP_QUEUE_SIZE         3                                           /**< Size of timer operation queues. */
 
@@ -94,67 +91,8 @@ uint8_t rfid_counter = 0;                                                       
 uint8_t hit_counter = 0;                                                            /* Counter for every time the unit has been hit. */
 
 APP_TIMER_DEF(advertising_timer);                                                   /* Defines the advertising app_timer. */
-APP_PWM_INSTANCE(PWM1, 1);                                                          /* Defines the PWM instance used for the red and green LED-pins. */
-APP_PWM_INSTANCE(PWM2, 2);                                                          /* Defines the PWM instance used for the blue LED-pins. */
 
-
-/**@brief Function for setting the color of the RGB-LEDS
-*
-*@details A decimal value of new_color_data uses predefined values to set the color.
-*         Value 0 = Green color.
-*         Value 1 = Red color. 
-*         Value 2 = Blue color.
-*         Value 100 = No color. (The LED is turned off).
-*
-* The function also has a way of remembering the previous state; green_state = true means you are vulnerable,
-*  green_state = false means you are invulnerable after a recent hit.
-*  An input value of 250 makes the LED either turn green or red, depending on the actual game state.
-*/
-
-uint8_t  red_value = 0, green_value = 0, blue_value = 0, color_data = 0;
-bool green_state = false;
-
-void set_rgb_color(uint8_t new_color_data){
-  
-  if (new_color_data == 250 && green_state == true)
-      color_data = 0;
-  else if (new_color_data == 250 && green_state == false)
-      color_data = 1;
-  else
-      color_data = new_color_data;
-  
-  switch (color_data) {
-    case 0:
-          red_value = 0;
-          green_value = 100;
-          blue_value = 0;
-          green_state = true;
-          break;
-    case 1:
-          red_value = 100;
-          green_value = 0;
-          blue_value = 0;
-          green_state = false;
-          break;
-    case 2:
-          red_value = 100;
-          green_value = 100;
-          blue_value = 100;
-          break;
-    case 100:
-          red_value = 100;
-          green_value = 100;
-          blue_value = 0;
-          break;
-     default:
-          break;
-    }
-    
-    while (app_pwm_channel_duty_set(&PWM1, 1, red_value) == NRF_ERROR_BUSY);
-    while (app_pwm_channel_duty_set(&PWM1, 0, green_value) == NRF_ERROR_BUSY);
-    while (app_pwm_channel_duty_set(&PWM2, 0, blue_value) == NRF_ERROR_BUSY);
-    
-}
+volatile bool activate_ir = false;
 
 /**@brief Function for updating the hit value when a hit is registered.
 *
@@ -216,36 +154,6 @@ static void timers_init(void)
 {
     // Initialize timer module, making it use the scheduler
     APP_TIMER_INIT(APP_TIMER_PRESCALER, APP_TIMER_OP_QUEUE_SIZE, false);
-}
-
-
-/**@brief Function for the PWM initialization.
- *
- * @details Initializes the PWM module.
- */
-static void pwm_init(void)
-{
-    ret_code_t err_code;
-    
-    /* 2-channel PWM, 200Hz, output on pins. */
-    app_pwm_config_t pwm1_cfg = APP_PWM_DEFAULT_CONFIG_2CH(20000L, PWM_RED_PIN, PWM_GREEN_PIN);
-    
-    /* 1-channel PWM, 200Hz, output on pins. */
-    app_pwm_config_t pwm2_cfg = APP_PWM_DEFAULT_CONFIG_2CH(26L, PWM_BLUE_PIN, PWM_IR_PIN);
-
-    pwm2_cfg.pin_polarity[0] = APP_PWM_POLARITY_ACTIVE_HIGH;
-
-    /* Initialize and enable PWM. */
-    err_code = app_pwm_init(&PWM1, &pwm1_cfg, NULL);
-    APP_ERROR_CHECK(err_code);
-    
-    err_code = app_pwm_init(&PWM2,&pwm2_cfg,NULL);
-    APP_ERROR_CHECK(err_code);
-    
-    app_pwm_enable(&PWM1);
-    app_pwm_enable(&PWM2);
-
-    set_rgb_color(100);
 }
 
 /**@brief Function for the GAP initialization.
@@ -326,27 +234,19 @@ static void pin_write_handler(ble_lbs_t * p_lbs, uint8_t * pin_state)
     uint8_t web_color_data = read_byte(pin_state, 5);
     set_rgb_color(web_color_data);
 
-    // Checks every pin_state[i] bitwise to a given binary number with a for loop.
-       
-    for(uint8_t i = 0; i < PIN_OUTPUT_OFFSET; i++){
-      if (read_bit(pin_state, 1, i)){
-          if (i == 0) {
-            set_rgb_color(2);
-            playNote(536);
-            nrf_delay_ms(50);
-            while (app_pwm_channel_duty_set(&PWM2, 1, 50) == NRF_ERROR_BUSY);;
-            playNote(536);
-            nrf_delay_ms(50);
-            set_rgb_color(250);
-            }
-          else if (i == 1)
-            nrf_gpio_pin_set((PIN_OUTPUT_START+i));
-          }
-      else if(!read_bit(pin_state, 1, 0))
-            while (app_pwm_channel_duty_set(&PWM2, 1, 0) == NRF_ERROR_BUSY);
-      else
-         nrf_gpio_pin_clear((PIN_OUTPUT_START+i));
-     } 
+    // Shoots IR-signal.
+    if (read_bit(pin_state, 1, 0))
+    {
+      ir_shooting(pin_state);
+    }
+    
+    // Turns laser on when game session is active
+    if(read_bit(pin_state, 1, 1))
+    {
+       nrf_gpio_pin_set(LASER_TRANSISTOR);
+    }
+    else
+       nrf_gpio_pin_clear(LASER_TRANSISTOR);
 }
 
 /**@brief Function for initializing services that will be used by the application.
@@ -590,10 +490,10 @@ static void pin_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t ac
     }
 
     else if(pin == RFID_INTERRUPT_PIN) {
-            rfid_counter = rfid_read_event_handler();
-            ble_lbs_on_button_change(&m_lbs, rfid_counter, 4);
+        rfid_counter = rfid_read_event_handler();
+        ble_lbs_on_button_change(&m_lbs, rfid_counter, 4);
 
-            if(rfid_counter % 20 == 0){
+        if(rfid_counter % 20 == 0){
             playNote(1072);
             set_rgb_color(2);
             nrf_delay_ms(10);
@@ -605,7 +505,7 @@ static void pin_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t ac
             nrf_delay_ms(10);
             playNote(901); 
             set_rgb_color(0);
-            }
+        }
     }
 }
 
@@ -641,7 +541,7 @@ void advertising_timer_init(void){
 
   app_timer_create(&advertising_timer, APP_TIMER_MODE_REPEATED, &radio_notification_evt_handler);
   //Starts the timer, sets it up for repeated start.
-  app_timer_start(advertising_timer, APP_TIMER_TICKS(300, 15), NULL);
+  app_timer_start(advertising_timer, APP_TIMER_TICKS(300, APP_TIMER_PRESCALER), NULL);
 
 }
 
@@ -663,9 +563,11 @@ int main(void)
 { 
     //Initialize GPIO
     nrf_gpiote_init();
-    pin_output_init();
-    pwm_init();  
+    pin_output_init(); 
     
+    // Initialize PWM
+    pwm_init(); 
+
     // Initialize
     timers_init();
     
@@ -682,6 +584,9 @@ int main(void)
     //Initialize shields
     twi_motordriver_init();
     twi_rfid_init();
+
+    // Initialize the IR lib. Must be done after initializing the SoftDevice
+    ir_lib_init(IR_OUTPUT_PIN);
 
     //Feedback, notifying the user that the DK is ready
     set_rgb_color(0);
