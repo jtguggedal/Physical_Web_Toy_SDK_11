@@ -113,7 +113,7 @@ void ir_shooting(uint8_t * ir_data)
     // Send infrared signal by implementing the NEC protocol
     // Carrier on time is always 560us, and the length of the break determines the bit value
     uint8_t p_data[] = {1, 2, 3, 4, 5};
-    static uint16_t ir_message[32];    
+    static uint16_t ir_message[16];    
     uint32_t ir_buffer_index = 0;
     for(int bit = 0; bit < 8; bit++)
     {
@@ -130,9 +130,14 @@ void ir_shooting(uint8_t * ir_data)
             ir_message[ir_buffer_index++] = 1120 - 560;
         }
     }
-		SEGGER_RTT_printf(0, "\nNew data\nData to be sent as ir signal: %d\n", p_data[0]);
+		SEGGER_RTT_printf(0, "\n\nIR-signal in bits, where an OFF-signal of 1690 is logical 1 and 560 is logical 0\nValue to be sent as ir signal: %d\nON\tOFF (in microseconds)\n", p_data[0]);
+                
 		for (uint8_t i=0; i<(sizeof(ir_message)/2); i++)
-			SEGGER_RTT_printf(0, "%d\n", ir_message[i]);
+                {
+                        SEGGER_RTT_printf(0, "%d", ir_message[i]);
+                        ir_message[i] = ir_message[i++];
+			SEGGER_RTT_printf(0, "\t%d\n", ir_message[i]);
+                }
 		
     // Send the data in the ir_message buffer
     // NOTE! The ir_message buffer must be static or global! The IR lib depends on the data in this buffer until the IR operation is complete.  
