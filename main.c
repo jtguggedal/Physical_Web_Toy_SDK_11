@@ -12,7 +12,6 @@
 
 #include "app_button.h"
 #include "app_error.h"
-#include "app_pwm.h"
 #include "app_timer.h"
 #include "ble_advdata.h"
 #include "ble_conn_params.h"
@@ -26,6 +25,7 @@
 #include "nrf_delay.h"
 #include "nrf_drv_gpiote.h"
 #include "nrf_drv_timer.h"
+#include "nrf_drv_ppi.h"
 #include "nrf_gpio.h"
 #include "nrf.h"
 #include <stdint.h>
@@ -36,10 +36,11 @@
 #include "advertising.h"
 #include "infrared_communication.h"
 #include "ir_lib.h"
+#include "perip_pwm.h"
 #include "read_set_bit.h"
 #include "twi_motordriver.h"
 #include "twi_rfid_driver.h"
-
+#include "SEGGER_RTT.h"
 
 #define CENTRAL_LINK_COUNT              0                                           /**<number of central links used by the application. When changing this number remember to adjust the RAM settings*/
 #define PERIPHERAL_LINK_COUNT           1                                           /**<number of peripheral links used by the application. When changing this number remember to adjust the RAM settings*/
@@ -52,15 +53,11 @@
 #define PIN_OUTPUT_START                12                                          /**< First PIN out of 8 which will be used as outputs. The seven subsequent pins will also turn into outputs. >**/
 #define PIN_OUTPUT_OFFSET               1
 
-#define IR_OUTPUT_PIN                   11
-#define IR_RECEIVER_PIN_1               13                                          /**< Button that will trigger the notification event with the LED Button Service */
-#define IR_RECEIVER_PIN_2               14
-#define IR_RECEIVER_PIN_3               15
 #define RFID_INTERRUPT_PIN              16
 
 #define PIEZO_BUZZER_PIN                3
 
-#define DEVICE_NAME                     "WHITE CAR"                                 /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "NOT A CAR"                                 /**< Name of device. Will be included in the advertising data. */
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
 #define APP_ADV_TIMEOUT_IN_SECONDS      BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED       /**< The advertising time-out (in units of seconds). When set to 0, we will never time out. */
@@ -83,16 +80,19 @@
 #define RADIO_NOTIFICATION_IRQ_PRIORITY 3
 #define RADIO_NOTIFICATION_DISTANCE     NRF_RADIO_NOTIFICATION_DISTANCE_800US
 
+
+
+
 static uint16_t                         m_conn_handle = BLE_CONN_HANDLE_INVALID;    /**< Handle of the current connection. */
 static ble_lbs_t                        m_lbs;                                      /**< LED Button Service instance. */
 bool user_connected = false;                                                        /**< A flag indicating if there is an user connected. */
 
 uint8_t rfid_counter = 0;                                                           /* Counter for every time the RFID-shield senses a nearby tag. */
-uint8_t hit_counter = 0;                                                            /* Counter for every time the unit has been hit. */
 
 APP_TIMER_DEF(advertising_timer);                                                   /* Defines the advertising app_timer. */
 
-volatile bool activate_ir = false;
+
+uint8_t hit_counter = 0;                                                            /* Counter for every time the unit has been hit. */
 
 /**@brief Function for updating the hit value when a hit is registered.
 *
@@ -106,6 +106,77 @@ uint8_t new_hit_value (void){
         hit_counter++;
     return hit_counter;
 }
+
+/**@brief Function for setting the color of the RGB-LEDS
+*
+*@details A decimal value of new_color_data uses predefined values to set the color.
+*         Value 0 = Green color.
+*         Value 1 = Red color. 
+*         Value 2 = Blue color.
+*         Value 100 = No color. (The LED is turned off).
+*@details duty_values is a struct defined in perip_pwm.h. 
+*         pwm1 = PWM to Red LED.
+*         pwm2 = PWM to Green LED.
+*         pwm3 = PWM to Blue LED.
+*
+* The function also has a way of remembering the previous state; green_state = true means you are vulnerable,
+*  green_state = false means you are invulnerable after a recent hit.
+*  An input value of 250 makes the LED either turn green or red, depending on the actual game state.
+*/
+
+
+uint8_t  red_value = 0, green_value = 0, blue_value = 0, color_data = 0;
+bool green_state = false;
+
+void set_rgb_color(uint8_t new_color_data){
+
+  duty_values color;
+  
+  if (new_color_data == 250 && green_state == true)
+      color_data = 0;
+  else if (new_color_data == 250 && green_state == false)
+      color_data = 1;
+  else
+      color_data = new_color_data;
+  
+  switch (color_data) {
+    case 0:
+          color.pwm1 = 0;
+          color.pwm2 = 1000;
+          color.pwm3 = 0;
+          green_state = true;
+          break;
+    case 1:
+          color.pwm1 = 1000;
+          color.pwm2 = 0;
+          color.pwm3 = 0;
+          green_state = false;
+          break;
+    case 2:
+          color.pwm1 = 0;
+          color.pwm2 = 0;
+          color.pwm3 = 1000;
+          break;
+    case 100:
+          color.pwm1 = 1000;
+          color.pwm2 = 1000;
+          color.pwm3 = 0;
+          break;
+     default:
+          break;
+    }
+    pwm_values_update(color);    
+}
+
+
+// IR pin event variables
+
+static nrf_drv_timer_t ir_timer = NRF_DRV_TIMER_INSTANCE(3);
+
+void timer_dummy_handler(nrf_timer_event_t event_type, void * p_context){}
+
+volatile bool activate_ir = false;
+
 
 /**@brief Function for the output pin initialization.
  *
@@ -237,7 +308,10 @@ static void pin_write_handler(ble_lbs_t * p_lbs, uint8_t * pin_state)
     // Shoots IR-signal.
     if (read_bit(pin_state, 1, 0))
     {
-      ir_shooting(pin_state);
+        ir_shooting(pin_state);
+        playNote(536);
+        nrf_delay_ms(50);
+        playNote(536);
     }
     
     // Turns laser on when game session is active
@@ -471,25 +545,69 @@ static void ble_stack_init(void)
     APP_ERROR_CHECK(err_code);
 }
 
+// Function to decode IR signals and message to web if the car is hit
+void ir_in_pin_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action)
+{
+      static uint8_t decoded = 0;
+      static uint8_t offset = 0;
+      static uint32_t prev = 0;
+
+      if(offset >= 8)
+          offset = 0;
+
+      uint32_t usec = nrf_drv_timer_capture(&ir_timer, NRF_TIMER_CC_CHANNEL0); 
+      if(offset) 
+          SEGGER_RTT_printf(0, "%d\r\n", usec - prev);
+      
+      if((usec - prev) > 2000)
+      {
+          decoded += (1 << (offset - 1));
+      }
+      
+      if(offset == 7) 
+      {
+          SEGGER_RTT_printf(0, "\r\n\n%d\n\r\n", decoded);
+          new_hit_value();
+          if(decoded != CAR_ID && decoded >= 1 && decoded <= 16)
+          {
+              ble_lbs_on_button_change(&m_lbs, hit_counter, 0);
+          }
+          decoded = 0;
+          
+          playNote(1516);
+          nrf_delay_ms(50);
+          playNote(1607);
+      }
+            
+
+      prev = usec;
+      offset++;
+}
+
+
+
 /**@brief Function for writing the proper notification when an input is received.
 **/
 
 static void pin_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action){
-    if(pin == IR_RECEIVER_PIN_1 || pin == IR_RECEIVER_PIN_2 || pin == IR_RECEIVER_PIN_3){
-      hit_counter = new_hit_value();
+    //if(pin == IR_RECEIVER_PIN_1 || pin == IR_RECEIVER_PIN_2 || pin == IR_RECEIVER_PIN_3){
+      
+     /*hit_counter = new_hit_value();
       playNote(1516);
       nrf_delay_ms(50);
-      playNote(1607);
+      playNote(1607);*/
 
-      if(pin == IR_RECEIVER_PIN_1)            
-            ble_lbs_on_button_change(&m_lbs, hit_counter, 0);
+     /* if(pin == IR_RECEIVER_PIN_1) {          
+          ir_in_pin_handler(pin, action);
+           //ble_lbs_on_button_change(&m_lbs, hit_counter, 0);
+      }
       else if(pin == IR_RECEIVER_PIN_2)
             ble_lbs_on_button_change(&m_lbs, hit_counter, 1);
       else if(pin == IR_RECEIVER_PIN_3)
             ble_lbs_on_button_change(&m_lbs, hit_counter, 2);
-    }
+    }*/
 
-    else if(pin == RFID_INTERRUPT_PIN) {
+    if(pin == RFID_INTERRUPT_PIN) {
         rfid_counter = rfid_read_event_handler();
         ble_lbs_on_button_change(&m_lbs, rfid_counter, 4);
 
@@ -520,20 +638,12 @@ void nrf_gpiote_init(void){
         err_code = nrf_drv_gpiote_init();
       }
     APP_ERROR_CHECK(err_code);
-    nrf_drv_gpiote_in_config_t ir_config = GPIOTE_CONFIG_IN_SENSE_TOGGLE(false);
-    ir_config.pull = NRF_GPIO_PIN_NOPULL;
 
     nrf_drv_gpiote_in_config_t rfid_config = GPIOTE_CONFIG_IN_SENSE_TOGGLE(false);
     rfid_config.pull = NRF_GPIO_PIN_PULLDOWN;
 
-    nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_1, &ir_config, pin_event_handler);
-    nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_2, &ir_config, pin_event_handler);
-    nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_3, &ir_config, pin_event_handler);
     nrf_drv_gpiote_in_init(RFID_INTERRUPT_PIN, &rfid_config, pin_event_handler);
 
-    nrf_drv_gpiote_in_event_enable(IR_RECEIVER_PIN_1, true);
-    nrf_drv_gpiote_in_event_enable(IR_RECEIVER_PIN_2, true);
-    nrf_drv_gpiote_in_event_enable(IR_RECEIVER_PIN_3, true);
     nrf_drv_gpiote_in_event_enable(RFID_INTERRUPT_PIN, true);
 }
 
@@ -544,6 +654,80 @@ void advertising_timer_init(void){
   app_timer_start(advertising_timer, APP_TIMER_TICKS(300, APP_TIMER_PRESCALER), NULL);
 
 }
+
+
+
+
+/** @brief Function for initializing PPI used in infrared signal decoding
+ *   The PPI is needed to convert the timer event into a task.
+ */
+uint32_t ir_ppi_init(void)
+{
+
+    uint32_t gpiote_event_addr;
+    uint32_t timer_task_addr;
+    nrf_ppi_channel_t ppi_channel;
+    ret_code_t err_code;
+    nrf_drv_gpiote_in_config_t config; 
+
+    config.sense = NRF_GPIOTE_POLARITY_HITOLO;
+    config.pull = NRF_GPIO_PIN_PULLUP;
+    config.hi_accuracy = false;
+    config.is_watcher = false;
+
+    nrf_drv_timer_config_t timer_config;
+
+    timer_config.frequency            = NRF_TIMER_FREQ_1MHz;
+    timer_config.mode                 = NRF_TIMER_MODE_TIMER;
+    timer_config.bit_width            = NRF_TIMER_BIT_WIDTH_32;
+    timer_config.interrupt_priority   = 3;
+
+    err_code = nrf_drv_timer_init(&ir_timer, &timer_config, timer_dummy_handler);
+    APP_ERROR_CHECK(err_code);
+
+
+    // Set up GPIOTE
+    err_code = nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_1, &config, ir_in_pin_handler);
+    APP_ERROR_CHECK(err_code);
+    err_code = nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_2, &config, ir_in_pin_handler);
+    APP_ERROR_CHECK(err_code);
+    err_code = nrf_drv_gpiote_in_init(IR_RECEIVER_PIN_3, &config, ir_in_pin_handler);
+    APP_ERROR_CHECK(err_code);
+
+
+
+    // Set up timer for capturing
+    nrf_drv_timer_capture_get(&ir_timer, NRF_TIMER_CC_CHANNEL0);
+
+    // Set up PPI channel
+    err_code = nrf_drv_ppi_channel_alloc(&ppi_channel);
+    APP_ERROR_CHECK(err_code);
+
+    timer_task_addr = nrf_drv_timer_capture_task_address_get(&ir_timer, NRF_TIMER_CC_CHANNEL0);
+    gpiote_event_addr = nrf_drv_gpiote_in_event_addr_get(IR_RECEIVER_PIN_1);
+
+    //err_code = nrf_drv_ppi_channel_assign(ppi_channel, gpiote_event_addr, timer_task_addr);
+    //APP_ERROR_CHECK(err_code);
+
+    //err_code = nrf_drv_ppi_channel_enable(ppi_channel);
+    //APP_ERROR_CHECK(err_code);
+
+    nrf_drv_gpiote_in_event_enable(IR_RECEIVER_PIN_1, true);
+    nrf_drv_gpiote_in_event_enable(IR_RECEIVER_PIN_2, true);
+    nrf_drv_gpiote_in_event_enable(IR_RECEIVER_PIN_3, true);
+
+
+    
+    // Enable timer
+    nrf_drv_timer_enable(&ir_timer);
+
+    return 0;
+
+}
+
+
+
+
 
 /**@brief Function for the Power Manager.
  */
@@ -561,10 +745,17 @@ static void power_manage(void)
 
 int main(void)
 { 
+    uint32_t err_code;
+
     //Initialize GPIO
     nrf_gpiote_init();
     pin_output_init(); 
     
+    err_code = nrf_drv_ppi_init();
+    APP_ERROR_CHECK(err_code);
+
+
+
     // Initialize PWM
     pwm_init(); 
 
@@ -587,6 +778,8 @@ int main(void)
 
     // Initialize the IR lib. Must be done after initializing the SoftDevice
     ir_lib_init(IR_OUTPUT_PIN);
+    err_code = ir_ppi_init();
+    APP_ERROR_CHECK(err_code);
 
     //Feedback, notifying the user that the DK is ready
     set_rgb_color(0);
