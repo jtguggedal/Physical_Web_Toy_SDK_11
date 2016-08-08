@@ -15,17 +15,23 @@
 #include "nrf_nvic.h"
 #include "nrf_drv_ppi.h"
 
+static uint8_t unique_car_IR_ID = 0;                                                          /* Unique ID for every car defined by the software. */
+
+void write_car_id(uint8_t car_id){
+  unique_car_IR_ID = car_id;
+}
+
 
 void ir_shooting(uint8_t * ir_data)
 {
     // Send infrared signal by implementing the NEC protocol
     // Carrier on time is always 560us, and the length of the break determines the bit value
-    uint8_t p_data[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+    uint8_t p_data[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
     static uint16_t ir_message[16];    
     uint32_t ir_buffer_index = 0;
     for(int bit = 0; bit < 8; bit++)
     {
-        if((p_data[CAR_ID] >> bit) & 0x01)
+        if((p_data[unique_car_IR_ID] >> bit) & 0x01)
         {
             // 560us on, 2.25ms time until next symbol
             ir_message[ir_buffer_index++] = 560;
@@ -38,7 +44,7 @@ void ir_shooting(uint8_t * ir_data)
             ir_message[ir_buffer_index++] = 1120 - 560;
         }
     }
-		SEGGER_RTT_printf(0, "\n\nIR-signal in bits, where an OFF-signal of 1690 is logical 1 and 560 is logical 0\nValue to be sent as ir signal: %d\nON\tOFF (in microseconds)\n", p_data[4]);
+		SEGGER_RTT_printf(0, "\n\nIR-signal in bits, where an OFF-signal of 1690 is logical 1 and 560 is logical 0\nValue to be sent as ir signal: %d\nON\tOFF (in microseconds)\n", p_data[unique_car_IR_ID]);
                 
 		for (uint8_t i=0; i<(sizeof(ir_message)/2); i++)
                 {

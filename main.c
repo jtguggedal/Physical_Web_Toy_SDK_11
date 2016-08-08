@@ -57,7 +57,7 @@
 
 #define PIEZO_BUZZER_PIN                3
 
-#define DEVICE_NAME                     "NOT A CAR"                                 /**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     "WHITE CAR"                                 /**< Name of device. Will be included in the advertising data. */
 
 #define APP_ADV_INTERVAL                64                                          /**< The advertising interval (in units of 0.625 ms; this value corresponds to 40 ms). */
 #define APP_ADV_TIMEOUT_IN_SECONDS      BLE_GAP_ADV_TIMEOUT_GENERAL_UNLIMITED       /**< The advertising time-out (in units of seconds). When set to 0, we will never time out. */
@@ -93,6 +93,7 @@ APP_TIMER_DEF(advertising_timer);                                               
 
 
 uint8_t hit_counter = 0;                                                            /* Counter for every time the unit has been hit. */
+static uint8_t unique_car_ID = 0;
 
 /**@brief Function for updating the hit value when a hit is registered.
 *
@@ -176,7 +177,6 @@ static nrf_drv_timer_t ir_timer = NRF_DRV_TIMER_INSTANCE(3);
 void timer_dummy_handler(nrf_timer_event_t event_type, void * p_context){}
 
 volatile bool activate_ir = false;
-
 
 /**@brief Function for the output pin initialization.
  *
@@ -321,6 +321,9 @@ static void pin_write_handler(ble_lbs_t * p_lbs, uint8_t * pin_state)
     }
     else
        nrf_gpio_pin_clear(LASER_TRANSISTOR);
+
+    write_car_id(pin_state[19]);
+    unique_car_ID = pin_state[19];
 }
 
 /**@brief Function for initializing services that will be used by the application.
@@ -568,15 +571,16 @@ void ir_in_pin_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action)
       {
           SEGGER_RTT_printf(0, "\r\n\n%d\n\r\n", decoded);
           new_hit_value();
-          if(decoded != CAR_ID && decoded >= 1 && decoded <= 16)
+          if(decoded != unique_car_ID && decoded >= 1 && decoded <= 16)
           {
-              ble_lbs_on_button_change(&m_lbs, hit_counter, 0);
-          }
-          decoded = 0;
+              ble_lbs_on_button_change(&m_lbs, hit_counter, 0);            
           
-          playNote(1516);
-          nrf_delay_ms(50);
-          playNote(1607);
+              playNote(1516);
+              nrf_delay_ms(50);
+              playNote(1607);
+          }
+
+          decoded = 0;
       }
             
 
@@ -608,7 +612,6 @@ static void pin_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t ac
     }*/
 
     if(pin == RFID_INTERRUPT_PIN) {
-        rfid_counter = rfid_read_event_handler();
         ble_lbs_on_button_change(&m_lbs, rfid_counter, 4);
 
         if(rfid_counter % 20 == 0){
@@ -624,6 +627,7 @@ static void pin_event_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t ac
             playNote(901); 
             set_rgb_color(0);
         }
+        rfid_counter = rfid_read_event_handler();
     }
 }
 

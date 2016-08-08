@@ -42,8 +42,6 @@ Output/nrf52832_xxaa_s132\ Debug/Obj/infrared_communication.o: \
  ../../../../../../components/softdevice/s132/headers/ble_gap.h \
  ../../../../../../components/softdevice/s132/headers/ble_gatt.h \
  c:\users\masi\documents\github\sdk\ 11\examples\ble_peripheral\physical_web_toy_sdk_11\infrared_communication.h \
- c:\users\masi\documents\github\sdk\ 11\examples\ble_peripheral\physical_web_toy_sdk_11\ir_lib.h \
- ../../../../../../components/drivers_nrf/delay/nrf_delay.h \
  ../../../../../../components/drivers_nrf/gpiote/nrf_drv_gpiote.h \
  ../../../../../../components/drivers_nrf/hal/nrf_gpiote.h \
  C:/Program\ Files\ (x86)/SEGGER/SEGGER\ Embedded\ Studio\ 2.20/include/stddef.h \
@@ -51,6 +49,8 @@ Output/nrf52832_xxaa_s132\ Debug/Obj/infrared_communication.o: \
  ../../../config/experimental_ble_app_blinky_s132_pca10040/nrf_drv_config.h \
  ../../../../../../components/drivers_nrf/config/nrf_drv_config_validation.h \
  ../../../../../../components/libraries/util/sdk_errors.h \
+ c:\users\masi\documents\github\sdk\ 11\examples\ble_peripheral\physical_web_toy_sdk_11\ir_lib.h \
+ ../../../../../../components/drivers_nrf/delay/nrf_delay.h \
  ../../../../../../components/drivers_nrf/timer/nrf_drv_timer.h \
  ../../../../../../components/libraries/util/nordic_common.h \
  ../../../../../../components/drivers_nrf/hal/nrf_timer.h \
@@ -58,4 +58,11 @@ Output/nrf52832_xxaa_s132\ Debug/Obj/infrared_communication.o: \
  ../../../../../../components/libraries/util/app_error.h \
  ../../../read_set_bit/read_set_bit.h \
  ../../../../../../external/segger_rtt/SEGGER_RTT.h \
- ../../../../../../external/segger_rtt/SEGGER_RTT_Conf.h
+ ../../../../../../external/segger_rtt/SEGGER_RTT_Conf.h \
+ ../../../../../../components/drivers_nrf/hal/nrf_ppi.h \
+ ../../../../../../components/softdevice/s132/headers/nrf_soc.h \
+ ../../../../../../components/softdevice/s132/headers/nrf_error_soc.h \
+ ../../../../../../components/softdevice/s132/headers/nrf_nvic.h \
+ ../../../../../../components/drivers_nrf/ppi/nrf_drv_ppi.h \
+ ../../../../../../components/libraries/util/sdk_resources.h \
+ ../../../../../../components/softdevice/s132/headers/nrf_sd_def.h

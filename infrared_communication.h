@@ -8,9 +8,6 @@
 #define IR_RECEIVER_PIN_2               14
 #define IR_RECEIVER_PIN_3               15
 
-
-#define CAR_ID                          4
-
 //Prototypes for functions used in infrared_communication.c
 void pwm_init(void);
 void set_rgb_color(uint8_t new_color_data);
@@ -28,4 +25,7 @@ uint32_t ir_ppi_init(void);
 */
 
 uint8_t new_hit_value(void);
+void write_car_id(uint8_t car_id);
+
+
 
